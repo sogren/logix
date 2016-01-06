@@ -30,6 +30,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'shoulda-matchers'
 end
 group :test do
   gem 'selenium-webdriver'
