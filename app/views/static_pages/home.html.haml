@@ -1,21 +1,17 @@
-#main
-  = render 'shared/header'
-  #content-wrapper.clearfix
-    #content-left
-      #title
-        %p
-          Logix
-      #description
-        %p
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue purus, lacinia at laoreet et, mollis at turpis. Maecenas blandit risus mi, et lobortis nunc condimentum et. Quisque non libero a erat cursus vulputate. Morbi dictum posuere ante. Nulla dapibus id erat sed posuere. Aenean ex libero, viverra ac hendrerit sed, rhoncus eget enim. Vestibulum at tellus accumsan, mollis tellus id, vehicula nisl. Donec nec lectus leo. Nullam hendrerit ultrices lorem, id scelerisque dolor eleifend at. Nam in euismod dolor, vel luctus erat.
-    #content-right
-      #gallery
-        #screenshot.clearfix
-          #previous
-            #triangle-left
-          = image_tag("ss1.png",id: "image1",style: "opacity:1;",class: "clearfix")
-          = image_tag("ss2.png",id: "image2",style: "opacity:0;",class: "clearfix")
-          = image_tag("ss3.png",id: "image3",style: "opacity:0;",class: "clearfix")
-          #next
-            #triangle-right
-
+#content-left
+  #title
+    %p
+      Logix
+  #description
+    %p
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue purus, lacinia at laoreet et, mollis at turpis. Maecenas blandit risus mi, et lobortis nunc condimentum et. Quisque non libero a erat cursus vulputate. Morbi dictum posuere ante. Nulla dapibus id erat sed posuere. Aenean ex libero, viverra ac hendrerit sed, rhoncus eget enim. Vestibulum at tellus accumsan, mollis tellus id, vehicula nisl. Donec nec lectus leo. Nullam hendrerit ultrices lorem, id scelerisque dolor eleifend at. Nam in euismod dolor, vel luctus erat.
+#content-right
+  #gallery
+    #screenshot.clearfix
+      #previous
+        #triangle-left
+      = image_tag("ss1.png",id: "image1",style: "opacity:1;",class: "clearfix")
+      = image_tag("ss2.png",id: "image2",style: "opacity:0;",class: "clearfix")
+      = image_tag("ss3.png",id: "image3",style: "opacity:0;",class: "clearfix")
+      #next
+        #triangle-right
