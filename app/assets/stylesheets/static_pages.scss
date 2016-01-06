@@ -1,0 +1,234 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+form{
+  margin: 0;
+  display: inline-block;
+  min-width:80px;
+  width: 20%;
+}
+body{
+  background:#FCFCFC;
+  background-image:url("noise.png");
+  font-family:georgia,"times new roman",times,serif;
+  text-align:center;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+#main{
+  width: 900px;
+  margin:auto;
+  box-shadow:1px 0 12px #AAA;
+}
+#topbuttons{
+  margin:auto;
+  font-size:0;
+  margin-bottom: 10px;
+}
+.button{
+  width:100%;
+  height:60px;
+  background:linear-gradient(to bottom right,#6F6,#4A4);
+  border-color:#6F6;
+  font-weight:bold;
+  font-size:18px;
+  color:#333;
+  cursor:pointer;
+}
+.button:hover{ background:linear-gradient(to top left,#8F8,#6C6); }
+.button:focus{ outline:none; }
+#content-wrapper{ width:100%; }
+#content-left{
+  width:50%;
+  float:left;
+}
+#title{
+  margin:30px 0;
+  font-size:46px;
+  font-weight:bold;
+  font-style: italic;
+}
+#description>p{
+  font-size: 20px;
+  line-height: 26px;
+}
+#content-right{
+  width:50%;
+  float:right;
+}
+#gallery{
+  margin:40px;
+  width:70%;
+}
+#screenshot{
+  position:relative;
+  width:100%;
+  padding-bottom:100%;
+}
+#screenshot>img{
+  width:100%;
+  position:absolute;
+  display:block;
+}
+
+#previous, #next{
+  width:18%;
+  height:100%;
+  position:absolute;
+  z-index: 50;
+  cursor:pointer;
+}
+#previous{ left:0; }
+#next{ right:0; }
+#previous:hover, #next:hover{
+  background:#FFF;
+  opacity:0.3;
+  #triangle-left, #triangle-right{
+    opacity: 1;
+  }
+}
+#triangle-left, #triangle-right{
+  position:absolute;
+  height:0;
+  width:0;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+  z-index: 49;
+  left:35%;
+  top:45%;
+  opacity:0;
+}
+#triangle-left{
+  border-right:15px solid #111;
+  left:35%;
+}
+#triangle-right{
+  border-left:15px solid #111;
+  right:35%;
+}
+#container > div{
+  width:30px;
+  height:30px;
+  border:2px solid #BBB;
+  display:inline-block;
+  float:left;
+}
+#container{
+  width:390px;
+  height:390px;
+  margin:auto;
+  margin-top:10px;
+  -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+       -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+}
+.row{
+  width:auto;
+  height:34px;
+}
+.square{
+  width:30px;
+  height:30px;
+  border:2px solid #BBB;
+  display:inline-block;
+  float:left;
+  background:#666;
+}
+#mainwrapper{
+  margin-top:50px;
+  min-height:450px;
+}
+#game-wrapper{
+  width:60%;
+  float:left;
+  margin-bottom:40px;
+}
+#functions-wrapper{
+  width: 40%;
+  height:100%;
+  float:right;
+  position:relative;
+  p{
+    margin: 0 auto;
+  }
+  button, p{
+    width:70px;
+    height:50px;
+    font-size:18px;
+    line-height:25px;
+    background:linear-gradient(to bottom right,#F66,#A44);
+    border-color:#F66;
+    margin-bottom: 10px;
+  }
+}
+#choose-time{
+  width:100%;
+  height:100%;
+  float: right;
+  display: block;
+  margin-bottom: 40px;
+  #prevlvl, #nextlvl{
+    display: inline-block;
+  }
+}
+#play-time{
+  clear: both;
+}
+#camera-title{
+  width:33%;
+  height:50px;
+  box-sizing:border-box;
+  background:#EEE;
+  border:2px outset #DDD;
+  text-align:center;
+  line-height:42px;
+  cursor:default;
+  margin:auto;
+  margin-top:120px;
+  margin-bottom:40px;
+}
+#camera-types div{
+  width:33%;
+  height:50px;
+  box-sizing:border-box;
+  background:#EEE;
+  border:2px outset #DDD;
+  text-align:center;
+  line-height:42px;
+  cursor:default;
+  margin:auto;
+  margin-bottom:40px;
+  display:inline-block;
+}
+#camera-types div:hover{
+  border: 2px inset #DDD;
+}
+#camera-types div:active{
+  background: #DDD;
+}
+.wall{ background: #FFF; }
+.srb{ background: #F00; }
+.sbb{ background: #00F; }
+.sgb{ background: #0F0; }
+.stb{ background: #0FF; }
+.syb{ background: #FF0; }
+.svb{ background: #F0F; }
+.srh{ background: #A00; }
+.sbh{ background: #00A; }
+.sgh{ background: #0A0; }
+.sth{ background: #0AA; }
+.syh{ background: #AA0; }
+.svh{ background: #A0A; }
+.sri{ background: #600; }
+.sbi{ background: #006; }
+.sgi{ background: #060; }
+.sti{ background: #066; }
+.syi{ background: #660; }
+.svi{ background: #606; }

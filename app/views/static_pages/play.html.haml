@@ -1,0 +1,33 @@
+#main
+  = render 'shared/header'
+  #content-wrapper.clearfix
+    #game-wrapper
+      #container.wrapper
+    #functions-wrapper
+      #choose-time
+        #chooselevel
+          #levels
+            #prevlvl
+              %p
+                Previous level
+            #nextlvl
+              %p
+                Next level
+          #levelbutton
+            %p
+              Level 1
+      #play-time
+        #arrows
+          #counter.dirbutton
+            %p
+              Moves:
+            %span
+          %button#up.dirbutton
+            Up
+          #directions
+            %button#left.dirbutton
+              Left
+            %button#right.dirbutton
+              Right
+          %button#down.dirbutton
+            Down
