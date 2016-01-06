@@ -10,11 +10,11 @@ class TopicsController < ApplicationController
   def show
   end
 
-
   def create
+    topic = current_user.topics.build(topic_params)
     if topic.save
       flash[:info] = 'Topic created!'
-      redirect_to topic_path(topic)
+      redirect_to topic
     else
       flash[:danger] = 'Topic creation failed!'
       redirect_to topics_path
@@ -28,5 +28,9 @@ class TopicsController < ApplicationController
         flash[:danger] = 'You cannot do this!'
         redirect_to topics_path
       end
+    end
+
+    def topic_params
+      params.require(:topic).permit(:title)
     end
 end

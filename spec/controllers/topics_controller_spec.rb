@@ -38,18 +38,19 @@ RSpec.describe TopicsController, type: :controller do
 
     describe 'POST #create' do
       before do
-        post :create, title: 'abcd', id: user.id
+        post :create, topic: { title: 'abcd' }
       end
       it 'exposes topic' do
-        expect(response).to redirect_to(topic_path)
+        expect(response).to redirect_to("/topics/#{topic.id-1}")
       end
     end
   end
 
   context 'user logged out' do
-      before do
-        get :index
-      end
+    before do
+      get :index
+    end
+
     describe 'GET #inex' do
       it 'exposes topics' do
         expect(response).to render_template(:index)
@@ -61,13 +62,13 @@ RSpec.describe TopicsController, type: :controller do
         get :show, id: topic.id
       end
       it 'exposes topic' do
-        expect(response).to rrender_template(:show)
+        expect(response).to render_template(:show)
       end
     end
 
     describe 'GET #new' do
       before do
-        post :new
+        get :new
       end
       it 'redirects user' do
         expect(response).to redirect_to(topics_path)

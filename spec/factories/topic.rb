@@ -9,6 +9,6 @@ FactoryGirl.define do
   end
   factory :custom_topic, class: Topic do
     author_id :author_id
-    title ''
+    title :title
   end
 end

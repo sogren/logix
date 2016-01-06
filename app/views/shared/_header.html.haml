@@ -5,5 +5,6 @@
   - if user_signed_in?
     = button_to "Forum", topics_path, class: "button", method: :get
     = button_to "Account", root_path, class: "button", method: :get
+    = button_to "new", new_topic_path, class: "button", method: :get
   -else
     = button_to "Register", new_user_path, class: "button", method: :get
