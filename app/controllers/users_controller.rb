@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :require_log_out, only:[:new, :create]
+  before_filter(only: [:new, :create]) { require_log_out(account_path) }
+  before_filter(only: [:account]) { require_login(root_path) }
   expose(:user)
 
   def show

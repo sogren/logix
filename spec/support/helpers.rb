@@ -6,7 +6,7 @@ end
 
 module RegistrationsHelper
   def register_user(username, email)
-    visit new_user_path
+    visit new_user_registration_path
     within('#sign-up-form') do
       fill_in 'user_username', with: username
       fill_in 'user_email', with: email

@@ -11,19 +11,27 @@ class ApplicationController < ActionController::Base
    devise_parameter_sanitizer.for(:account_update) << :username
   end
 
+  def after_sign_in_path_for(resource)
+    account_path
+  end
+
+  def after_sign_up_path_for(resource)
+    account_path # Or :prefix_to_your_route
+  end
+
   private
 
-    def require_login
+    def require_login(path = root_path)
       unless user_signed_in?
-        flash[:danger] = 'You cannot do this! First sign in'
-        redirect_to topics_path
+        flash[:danger] = 'You cannot do this! First sign in or sign up'
+        redirect_to path
       end
     end
 
-    def require_log_out
+    def require_log_out(path = root_path)
       if user_signed_in?
         flash[:danger] = 'You are already logged in'
-        redirect_to root_path
+        redirect_to path
       end
     end
 end

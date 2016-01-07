@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'Users registration', type: :feature do
+RSpec.describe 'Users register', type: :feature do
   include ViewHelper
   include RegistrationsHelper
 
   describe 'Creating new user' do
     let(:user) { FactoryGirl.create :user }
 
-    context 'with valid params' do
+    context 'with #valid params' do
       before do
         register_user('qwer','email12@example.com')
       end
@@ -20,7 +20,7 @@ RSpec.describe 'Users registration', type: :feature do
       end
     end
 
-    context 'with invalid params' do
+    context 'with #invalid params' do
       before do
         register_user('','')
       end

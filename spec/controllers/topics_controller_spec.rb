@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe TopicsController, type: :controller do
   let(:user) { FactoryGirl.create :user }
   let(:user2) { FactoryGirl.create :user }
-  let(:topic) { FactoryGirl.create :valid_topic, author: user2}
+  let(:topic) { FactoryGirl.create :valid_topic, author: user2 }
 
-  context 'user logged in' do
+  context 'user #logged_in' do
     before do
       sign_in user
     end
@@ -47,7 +47,7 @@ RSpec.describe TopicsController, type: :controller do
     end
   end
 
-  context 'user logged out' do
+  context 'user #logged_out' do
     describe 'GET #index' do
       before do
         get :index

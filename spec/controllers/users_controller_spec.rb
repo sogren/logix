@@ -4,7 +4,7 @@ RSpec.describe UsersController, type: :controller do
   let(:user) { FactoryGirl.create :user }
   let(:user2) { FactoryGirl.create :user }
 
-  context 'user logged in' do
+  context 'user #logged_in' do
     before do
       sign_in user
     end
@@ -26,18 +26,9 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to render_template(:show)
       end
     end
-
-    describe 'GET #new' do
-      before do
-        get :new
-      end
-      it 'redirect to root patht' do
-        expect(response).to redirect_to(root_path)
-      end
-    end
   end
 
-  context 'user logged out' do
+  context 'user #logged_out' do
     before do
       get :index
     end
@@ -57,15 +48,6 @@ RSpec.describe UsersController, type: :controller do
       end
       it 'exposes user profile' do
         expect(response).to render_template(:show)
-      end
-    end
-
-    describe 'GET #new' do
-      before do
-        get :new
-      end
-      it 'redirects user' do
-        expect(response).to render_template(:new)
       end
     end
   end

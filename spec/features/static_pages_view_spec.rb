@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'Viewing static pages', type: :feature do
+RSpec.describe 'StaticPages view', type: :feature do
   include ViewHelper
 
   let(:user) { FactoryGirl.create :user }
 
-  context 'user logged out' do
+  context 'user #logged_out' do
     describe 'Logix page' do
       it 'show logix page' do
         visit_page(root_path)
@@ -30,7 +30,7 @@ RSpec.describe 'Viewing static pages', type: :feature do
     end
   end
 
-  context 'user logged in' do
+  context 'user #logged_in' do
     before do
       login_as(user, scope: :user)
     end

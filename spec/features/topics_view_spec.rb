@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'Topics pages', type: :feature do
+RSpec.describe 'Topics view', type: :feature do
   include ViewHelper
 
   describe 'Viewing topics pages' do
     let(:user) { FactoryGirl.create :user }
     let(:topic) { FactoryGirl.create :valid_topic, author: user }
 
-    context 'user logged out' do
+    context 'user #logged_out' do
       describe 'forum page' do
         before do
           visit_page(topics_path)
@@ -46,7 +46,7 @@ RSpec.describe 'Topics pages', type: :feature do
       end
     end
 
-    context 'user logged in' do
+    context 'user #logged_in' do
       before do
         login_as(user, scope: :user)
       end
