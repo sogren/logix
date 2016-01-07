@@ -6,5 +6,7 @@
     = button_to "Forum", topics_path, class: "button", method: :get
     = button_to "Account", root_path, class: "button", method: :get
     = button_to "new", new_topic_path, class: "button", method: :get
+    = button_to "logout", destroy_user_session_path, class: "button", method: :delete
   -else
-    = button_to "Register", new_user_path, class: "button", method: :get
+    = button_to "Log in", new_user_session_path, class: "button", method: :get
+    = button_to "Register", new_user_registration_path, class: "button", method: :get

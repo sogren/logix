@@ -20,12 +20,13 @@ RSpec.describe 'Users pages', type: :feature do
 
       describe 'account page' do
         before do
-          visit_page(new_user_path)
+          visit_page(account_path)
         end
 
-        it 'shows register page' do
+        it 'redirect to register page' do
           expect(page).to have_content('Log in')
           expect(page).to have_content('Sign up')
+          expect(page).to have_content('You cannot do this')
         end
       end
     end
@@ -40,8 +41,9 @@ RSpec.describe 'Users pages', type: :feature do
           visit_page(new_user_path)
         end
 
-        it 'redirects to account page' do
-          expect(page).to have_content('Manage your account')
+        it 'redirects to root path' do
+          expect(page).to have_content('Logix')
+          expect(page).to have_content('Lorem ipsum')
         end
       end
 

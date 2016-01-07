@@ -5,11 +5,15 @@ module ViewHelper
 end
 
 module RegistrationsHelper
-  def register_user
+  def register_user(username, email)
     visit new_user_path
-    fill_in 'user_name', :with => 'user.username'
-    fill_in 'password', :with => 'saf'
-    click_button 'sign_up_button'
+    within('#sign-up-form') do
+      fill_in 'user_username', with: username
+      fill_in 'user_email', with: email
+      fill_in 'user_password', with: 'qwerqwer'
+      fill_in 'user_password_confirmation', with: 'qwerqwer'
+      click_button 'Sign up'
+    end
   end
 end
 
@@ -32,7 +36,9 @@ end
 module PlayHelper
   def regist3er_user(user)
     visit home_page
-    fill_in 'user_name', :with => user.username
+    fill_in 'user_username', :with => user.username
+    fill_in 'user_email', :with => user.username
+    fill_in 'password', :with => user.password
     fill_in 'password', :with => user.password
     click_button 'sign_up_button'
   end

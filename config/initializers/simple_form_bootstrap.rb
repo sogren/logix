@@ -11,7 +11,6 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :label, class: 'control-label'
 
     b.use :input, class: 'form-control'
     b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
@@ -23,7 +22,6 @@ SimpleForm.setup do |config|
     b.use :placeholder
     b.optional :maxlength
     b.optional :readonly
-    b.use :label, class: 'control-label'
 
     b.use :input
     b.use :error, wrap_with: { tag: 'span', class: 'help-block' }

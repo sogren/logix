@@ -48,11 +48,10 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   context 'user logged out' do
-    before do
-      get :index
-    end
-
-    describe 'GET #inex' do
+    describe 'GET #index' do
+      before do
+        get :index
+      end
       it 'exposes topics' do
         expect(response).to render_template(:index)
       end
