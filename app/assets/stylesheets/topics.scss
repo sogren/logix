@@ -34,3 +34,21 @@ a, a:hover, a:focus, a:active{
   }
   .button{ display: block; }
 }
+#topic-display{
+  #info{
+    div{ display: inline-block; }
+    margin: 0 20px;
+  }
+  #author{
+    float: left;
+  }
+  #when{
+    float: right;
+  }
+  #content{
+    width: 600px;
+    margin: 0 auto;
+    font-size: 20px;
+    text-align: left;
+  }
+}

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :valid_topic, class: Topic do
-    author_id 1
+    author_id :author_id
     title 'Custom topic'
     content 'Custom content'
     counter 1

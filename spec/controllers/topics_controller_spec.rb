@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe TopicsController, type: :controller do
   let(:user) { FactoryGirl.create :user }
   let(:user2) { FactoryGirl.create :user }
-  let(:topic) { FactoryGirl.create :valid_topic}
+  let(:topic) { FactoryGirl.create :valid_topic, author: user2}
 
   context 'user logged in' do
     before do

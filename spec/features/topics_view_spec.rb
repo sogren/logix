@@ -5,7 +5,7 @@ RSpec.describe 'Topics pages', type: :feature do
 
   describe 'Viewing topics pages' do
     let(:user) { FactoryGirl.create :user }
-    let(:topic) { FactoryGirl.create :valid_topic }
+    let(:topic) { FactoryGirl.create :valid_topic, author: user }
 
     context 'user logged out' do
       describe 'forum page' do
