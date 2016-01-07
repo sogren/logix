@@ -11,4 +11,20 @@ class ApplicationController < ActionController::Base
    devise_parameter_sanitizer.for(:sign_up)        << :username
    devise_parameter_sanitizer.for(:account_update) << :username
   end
+
+  private
+
+    def require_login
+      unless user_signed_in?
+        flash[:danger] = 'You cannot do this!'
+        redirect_to topics_path
+      end
+    end
+
+    def require_log_out
+      if user_signed_in?
+        flash[:danger] = 'You are already logged in'
+        redirect_to root_path
+      end
+    end
 end

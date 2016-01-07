@@ -4,6 +4,7 @@ RSpec.describe TopicsController, type: :controller do
   let(:user) { FactoryGirl.create :user }
   let(:user2) { FactoryGirl.create :user }
   let(:topic) { FactoryGirl.create :valid_topic}
+
   context 'user logged in' do
     before do
       sign_in user
@@ -77,7 +78,7 @@ RSpec.describe TopicsController, type: :controller do
 
     describe 'POST #create' do
       before do
-        post :create
+        post :create, topic: { title: 'abcd' }
       end
       it 'redirects user' do
         expect(response).to redirect_to(topics_path)

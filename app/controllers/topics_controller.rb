@@ -23,13 +23,6 @@ class TopicsController < ApplicationController
 
   private
 
-    def require_login
-      unless user_signed_in?
-        flash[:danger] = 'You cannot do this!'
-        redirect_to topics_path
-      end
-    end
-
     def topic_params
       params.require(:topic).permit(:title)
     end

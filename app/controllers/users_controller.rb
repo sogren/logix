@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :require_log_out, only:[:new, :create]
   expose(:user)
 
   def create
