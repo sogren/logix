@@ -5,6 +5,7 @@ RSpec.describe 'Topics pages', type: :feature do
 
   describe 'Viewing topics pages' do
     let(:user) { FactoryGirl.create :user }
+    let(:topic) { FactoryGirl.create :valid_topic }
 
     context 'user logged out' do
       describe 'forum page' do
@@ -14,7 +15,12 @@ RSpec.describe 'Topics pages', type: :feature do
 
         it 'shows forum page' do
           expect(page).to have_content('Latest topics')
-          expect(page).to have_content('Sign up')
+        end
+        it 'has topics details page' do
+          expect(page).to have_content('Title')
+          expect(page).to have_content('Activity')
+          expect(page).to have_content('Posts')
+          expect(page).to have_content('Views')
         end
       end
 
@@ -25,7 +31,17 @@ RSpec.describe 'Topics pages', type: :feature do
 
         it 'redirects to forum page' do
           expect(page).to have_content('Latest topic')
-          expect(page).to have_content('You cannot go there! First sign in')
+          expect(page).to have_content('You cannot do this! First sign in')
+        end
+      end
+
+      describe 'show topic page' do
+        before do
+          visit_page(topic_path(topic))
+        end
+
+        it 'shows topic page' do
+          expect(page).to have_content('Custom topic')
         end
       end
     end
@@ -42,7 +58,12 @@ RSpec.describe 'Topics pages', type: :feature do
 
         it 'shows forum page' do
           expect(page).to have_content('Latest topics')
-          expect(page).to have_content('Sign up')
+        end
+        it 'has topics details page' do
+          expect(page).to have_content('Title')
+          expect(page).to have_content('Activity')
+          expect(page).to have_content('Posts')
+          expect(page).to have_content('Views')
         end
       end
 
@@ -52,7 +73,17 @@ RSpec.describe 'Topics pages', type: :feature do
         end
 
         it 'shows new topic page' do
-          expect(page).to have_content('create topic')
+          expect(page).to have_content('Create new topic')
+        end
+      end
+
+      describe 'show topic page' do
+        before do
+          visit_page(topic_path(topic))
+        end
+
+        it 'shows topic page' do
+          expect(page).to have_content('Custom topic')
         end
       end
     end

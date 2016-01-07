@@ -1,13 +1,13 @@
 class TopicsController < ApplicationController
   before_filter :require_login, only: [:new, :create]
-  expose(:topics)
+  expose(:topics) { Topic.order(created_at: :desc) }
   expose(:topic)
 
   def index
-
   end
 
   def show
+    topic.update(counter: topic.counter + 1)
   end
 
   def create

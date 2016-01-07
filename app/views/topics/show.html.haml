@@ -1,0 +1,22 @@
+#topic-header
+  Latest topics:
+%table.table.table-hover
+  %tr
+    %th
+      Title
+    %th
+      Views
+    %th
+      Posts
+    %th
+      Activity
+  - topics.each do |t|
+    %tr
+      %td
+        = link_to t.title, topic_path(t)
+      %td.details
+        = t.counter
+      %td.details
+        = t.title.length
+      %td.when
+        = "#{time_ago_in_words(t.created_at)} ago"

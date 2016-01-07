@@ -5,12 +5,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-form{
-  margin: 0;
-  display: inline-block;
-  min-width:80px;
-  width: 20%;
-}
 body{
   background:#FCFCFC;
   background-image:url("noise.png");
@@ -30,6 +24,12 @@ body{
   margin:auto;
   font-size:0;
   margin-bottom: 10px;
+  form{
+    margin: 0;
+    display: inline-block;
+    min-width:80px;
+    width: 20%;
+  }
 }
 .button{
   width:100%;

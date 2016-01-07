@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
     def require_login
       unless user_signed_in?
-        flash[:danger] = 'You cannot do this!'
+        flash[:danger] = 'You cannot do this! First sign in'
         redirect_to topics_path
       end
     end
