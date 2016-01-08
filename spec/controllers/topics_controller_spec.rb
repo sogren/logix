@@ -42,7 +42,7 @@ RSpec.describe TopicsController, type: :controller do
         post :create, topic: { title: 'abcd' }
       end
       it 'exposes topic' do
-        expect(response).to redirect_to("/topics/#{topic.id-1}")
+        expect(response).to redirect_to("/topics/#{topic.id - 1}")
       end
     end
   end

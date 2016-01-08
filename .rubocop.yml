@@ -1,0 +1,16 @@
+
+Lint/UnusedMethodArgument:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+AllCops:
+  Exclude:
+    - config/**/*
+    - db/**/*
+    - bin/**/*
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
+    - 'Guardfile'
+    - 'Rakefile'
+Style/Documentation:
+  Exclude:
+    - '**/*'

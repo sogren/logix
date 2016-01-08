@@ -9,7 +9,7 @@ RSpec.describe 'Users register', type: :feature do
   describe 'Creating new user' do
     context 'with #valid params' do
       before do
-        register_user('qwer','email12@example.com')
+        register_user('qwer', 'email12@example.com')
       end
 
       it 'registers successfully page' do
@@ -25,7 +25,7 @@ RSpec.describe 'Users register', type: :feature do
 
     context 'with #invalid params' do
       before do
-        register_user('','')
+        register_user('', '')
       end
 
       it 'redirect to register page' do

@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-   devise_parameter_sanitizer.for(:sign_up)        << :username
-   devise_parameter_sanitizer.for(:account_update) << :username
+    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:account_update) << :username
   end
 
   def after_sign_in_path_for(resource)
@@ -21,17 +21,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def require_login(path = root_path)
-      unless user_signed_in?
-        flash[:danger] = 'You cannot do this! First sign in or sign up'
-        redirect_to path
-      end
-    end
-
-    def require_log_out(path = root_path)
-      if user_signed_in?
-        flash[:danger] = 'You are already logged in'
-        redirect_to path
-      end
-    end
+  def require_login(path = root_path)
+    return true if user_signed_in?
+    flash[:danger] = 'You cannot do this! First sign in or sign up'
+    redirect_to path
+  end
 end

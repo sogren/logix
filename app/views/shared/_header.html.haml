@@ -6,7 +6,7 @@
   - if user_signed_in?
     = button_to "Forum", topics_path, class: "button", method: :get
     = button_to "Account", account_path, class: "button", method: :get
-    = button_to "new", new_topic_path, class: "button", method: :get
+    = button_to "New topic", new_topic_path, class: "button", method: :get
     = button_to "logout", destroy_user_session_path, class: "button", method: :delete
   -else
     = button_to "Log in", new_user_session_path, class: "button", method: :get
