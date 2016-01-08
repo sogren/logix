@@ -2,6 +2,7 @@
   = button_to "Logix", root_path, class: "button", method: :get
   = button_to "PLAY", play_path, class: "button", method: :get
   = button_to "About", about_path, class: "button", method: :get
+  = button_to "users", users_path, class: "button", method: :get
   - if user_signed_in?
     = button_to "Forum", topics_path, class: "button", method: :get
     = button_to "Account", account_path, class: "button", method: :get

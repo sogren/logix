@@ -1,0 +1,7 @@
+%h1
+  Top users:
+#users
+  - users.each_with_index do |u, index|
+    #user
+      %h3
+        = link_to "#{index+1} #{u.username}",  u
