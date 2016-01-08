@@ -4,7 +4,7 @@
   #info.clearfix
     #author
       %p
-        = "Topic by: #{topic.author.username}"
+        = "Topic by: #{topic.creator}"
     #when
       %p
         = "Last post #{time_ago_in_words(topic.created_at)} ago"

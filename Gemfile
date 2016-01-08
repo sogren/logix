@@ -31,7 +31,6 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'shoulda-matchers'
-  gem 'reek'
   gem 'rubocop'
 end
 group :test do

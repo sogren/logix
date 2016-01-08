@@ -6,6 +6,11 @@ class Topic < ActiveRecord::Base
   validates :title, presence: true, length: { maximum: 80 }
   validates :content, length: { maximum: 1200 }
 
+  def creator
+    return author.username if author
+    'User deleted.'
+  end
+
   private
 
   def set_counter
