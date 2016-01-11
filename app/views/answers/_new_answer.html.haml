@@ -1,0 +1,7 @@
+#new-response
+  = simple_form_for(answer, url: new_answer_path) do |f|
+    = f.error_notification
+      .form-inputs
+        = f.input :content
+      .form-actions
+        = f.button :submit, "Send"

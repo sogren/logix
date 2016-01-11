@@ -1,0 +1,12 @@
+#topic-display
+  #topic-header
+    = response.title
+  #info.clearfix
+    #author
+      %p
+        = "Topic by: #{response.author}"
+    #when
+      %p
+        = "Last post #{time_ago_in_words(response.created_at)} ago"
+  #content
+    = response.content

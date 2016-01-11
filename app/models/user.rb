@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
   validates :username, presence: true
 
   has_many :topics, foreign_key: :author_id
+  has_many :answers, foreign_key: :author_id
 
 end
