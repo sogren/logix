@@ -1,13 +1,24 @@
-#topbuttons
-  = button_to "Logix", root_path, class: "button", method: :get
-  = button_to "PLAY", play_path, class: "button", method: :get
-  = button_to "About", about_path, class: "button", method: :get
-  = button_to "users", users_path, class: "button", method: :get
-  - if user_signed_in?
-    = button_to "Forum", topics_path, class: "button", method: :get
-    = button_to "Account", account_path, class: "button", method: :get
-    = button_to "New topic", new_topic_path, class: "button", method: :get
-    = button_to "logout", destroy_user_session_path, class: "button", method: :delete
-  -else
-    = button_to "Log in", new_user_session_path, class: "button", method: :get
-    = button_to "Register", new_user_registration_path, class: "button", method: :get
+#header-wrapper
+  %ul.nav.nav-tabs
+    %li
+      = link_to "Logix", root_path, method: :get
+    %li
+      = link_to "PLAY", play_path, method: :get
+    %li
+      = link_to "About", about_path, method: :get
+    %li
+      = link_to "users", users_path, method: :get
+      - if user_signed_in?
+        %li
+          = link_to "Forum", topics_path, method: :get
+        %li
+          = link_to "Account", account_path, method: :get
+        %li
+          = link_to "New topic", new_topic_path, method: :get
+        %li
+          = link_to "logout", destroy_user_session_path, method: :delete
+      -else
+        %li
+          = link_to "Log in", new_user_session_path, method: :get
+        %li
+          = link_to "Register", new_user_registration_path, method: :get
