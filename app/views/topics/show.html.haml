@@ -11,3 +11,15 @@
         = "Last post #{time_ago_in_words(topic.created_at)} ago"
   #content
     = topic.content
+#answers
+  #topic-display
+    - topic.answers.each do |a|
+      #author
+        %p
+          Answer by:
+          = link_to "#{a.author.username}", a.author
+      #content
+        = a.content
+
+#content
+  = render 'answers/new_answer'

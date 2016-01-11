@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
   before_filter(only: [:new, :create]) { require_login(topics_path) }
   expose(:topics) { Topic.order(created_at: :desc) }
   expose(:topic)
+  expose(:answer) { Answer.new }
 
   def index
   end
