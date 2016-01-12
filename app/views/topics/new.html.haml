@@ -1,7 +1,10 @@
 #topic-header
   Create new topic:
 #new-topic
-  = simple_form_for( topic, html: { class: 'form-horizontal' } ) do |f|
-    = f.input :title, required: true
-    = f.input :content, required: true
-    = f.button :submit
+  = simple_form_for( @topic, html: { class: 'form-horizontal' } ) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :title, required: true
+      = f.input :content, required: true
+    .form-actions
+      = f.button :submit

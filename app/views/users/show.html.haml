@@ -11,3 +11,9 @@
       %h4
         - user.topics.each do |t|
           = link_to "#{t.title}", t
+  %h3
+    Latest answers:
+    #latest-topics
+      %h4
+        - user.answers.each do |a|
+          = link_to "#{a.topic.title}", a.topic

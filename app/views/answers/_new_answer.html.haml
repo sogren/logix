@@ -1,8 +1,8 @@
 #new-response
-  = simple_form_for answer, url: topic_answers_path(topic), method: :post do |f|
+  = simple_form_for answer, url: topic_answers_path(@topic), method: :post do |f|
     = f.error_notification
     .form-inputs
       = f.input :content
-      = f.hidden_field :topic_id, value: topic.id
+      = f.hidden_field :topic_id, value: @topic.id
     .form-actions
       = f.button :submit, "Send"

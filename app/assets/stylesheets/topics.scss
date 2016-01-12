@@ -41,6 +41,9 @@ a, a:hover, a:focus, a:active{
   }
   #author{
     float: left;
+    max-width: 150px;
+    word-wrap:  break-word;
+    word-break: break-all;
   }
   #when{
     float: right;
@@ -52,6 +55,7 @@ a, a:hover, a:focus, a:active{
     text-align: left;
     box-shadow:1px 0 12px #AAA;
     padding: 15px;
+    margin-bottom: 30px;
   }
-  margin-bottom: 30px;
+  margin-bottom: 45px;
 }

@@ -39,7 +39,7 @@ RSpec.describe TopicsController, type: :controller do
 
     describe 'POST #create' do
       before do
-        post :create, topic: { title: 'abcd' }
+        post :create, topic: { title: 'abcd', content: 'awefawe' }
       end
       it 'exposes topic' do
         expect(response).to redirect_to("/topics/#{topic.id - 1}")
@@ -77,7 +77,7 @@ RSpec.describe TopicsController, type: :controller do
 
     describe 'POST #create' do
       before do
-        post :create, topic: { title: 'abcd' }
+        post :create, topic: { title: 'abcd', content: 'awefawe' }
       end
       it 'redirects user' do
         expect(response).to redirect_to(topics_path)

@@ -5,7 +5,7 @@ class Topic < ActiveRecord::Base
 
   validates :author_id, presence: true
   validates :title, presence: true, length: { maximum: 80 }
-  validates :content, length: { maximum: 1200 }
+  validates :content, presence: true, length: { maximum: 1200 }
 
   def creator
     return author.username if author
