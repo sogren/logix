@@ -1,11 +1,11 @@
 class AnswersController < ApplicationController
-  expose(:answer)
   def new
+    @answer = Answer.new
   end
 
   def create
-    answer = current_user.answers.build(answer_params)
-    if answer.save
+    @answer = current_user.answers.build(answer_params)
+    if @answer.save
       flash[:notice] = "success"
       redirect_to :back
     else
