@@ -46,7 +46,7 @@ main = ->
   console.log(map_array)
 
   $(document).ready ->
-    create(map_array)
+    # create(map_array)
 
 
 #####################
