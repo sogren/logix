@@ -618,7 +618,7 @@ document.onkeydown=checkkey = function(e){
   }
 // v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v v
 $(document).ready(function(){
-  create()
+  // create()
   $("#functions").children().click(function(){
     style=$(this).attr("id")
   });
