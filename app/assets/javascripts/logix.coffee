@@ -85,6 +85,5 @@ main = ->
   $(document).ready ->
     create(class_arr)
 
-
 #####################
 main()
