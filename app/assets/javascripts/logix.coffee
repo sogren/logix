@@ -1,19 +1,62 @@
+find_solution = ->
+  console.log("Yeah")
+
+
+####################################################################################
+####################################################################################
+# display map with canvas cuz html is inefficient
+hey_ho_canvas = (arr) ->
+  # return color depending on tile type / temporary i hope cuz its ugly as hell
+  color_from_cls = (cls) ->
+    basic_color = (name, b) ->
+      switch name
+        when 'sr' then return '#' + b + '0' + '0'
+        when 'sb' then return '#' + '0' +'0'+ b
+        when 'sg' then return '#' + '0' + b + '0'
+        when 'st' then return '#' + '0' + b + b
+        when 'sy' then return '#' + b + b + '0'
+        when 'sv' then return '#' + b + '0' + b
+    bright = ['F', 'A', '6']
+    switch cls[2]
+      when 'b' then b = bright[0]
+      when 'h' then b = bright[1]
+      when 'i' then b = bright[2]
+    return basic_color(cls.slice(0,2), b)
+
+  canvas = document.getElementById('canvas')
+  c = canvas.getContext('2d')
+  c.fillStyle = '#BBB'
+  c.fillRect(0, 0, 390, 390)
+  row = 0
+  while row < 13
+    column = 0
+    while column < 13
+      tile_cls = arr[row][column]
+      if tile_cls.length == 3
+        if tile_cls == 'sqr'
+          color = '#666'
+        else if tile_cls == 'wll'
+          color = '#FFF'
+        else
+          color = color_from_cls(tile_cls)
+        c.fillStyle = color
+        c.fillRect(30*column + 2, 30*row + 2, 26, 26)
+      column++
+    row++
+
+####################################################################################
+####################################################################################
 main = ->
-  dir = ''
   #
   document.onkeydown = (e) ->
     switch e.keyCode
       when 37
-        dir = 'left'
         move(-1,0)
       when 38
-        dir = 'up'
         move(0,-1)
       when 39
-        dir = 'right'
         move(1,0)
       when 40
-        dir = 'down'
         move(0,1)
     return
   #
@@ -36,16 +79,16 @@ main = ->
 
     $(document).ready ->
       class_arr = convert(map_array, hash_blocks, hash_homes)
-      create(class_arr)
+      #create(class_arr)
+      hey_ho_canvas(class_arr)
 
   # converts map array and homes hash to map of class names / used in displaying map
   convert = (arr_blocks, hash_blocks, hash_homes) ->
     # returns class names from block name
     class_names = (value) ->
       switch value
-        when 0 then return 'square'
-        when 1 then return 'wall'
-    #
+        when 0 then return 'sqr'
+        when 1 then return 'wll'
     # checks if there is block on given position, returns its name
     block_presence = (value) ->
       for key of hash_blocks
@@ -117,10 +160,12 @@ main = ->
   hash_blocks = { 'r': [5, 8], 'g': [11, 2], 'b': [1, 7], 'y': [8, 3], 't': [5, 2], 'v': [2, 3] }
 
   class_arr = convert(map_array, hash_blocks, hash_homes)
-
+  console.log(class_arr)
   $(document).ready ->
-    create(class_arr)
-#####################
+    #create(class_arr)
+    hey_ho_canvas(class_arr)
+####################################################################################
+####################################################################################
 main()
 
 
