@@ -8,39 +8,47 @@ find_solution = ->
 hey_ho_canvas = (arr) ->
   # return color depending on tile type / temporary i hope cuz its ugly as hell
   color_from_cls = (cls) ->
-    basic_color = (name, b) ->
-      switch name
-        when 'sr' then return '#' + b + '0' + '0'
-        when 'sb' then return '#' + '0' +'0'+ b
-        when 'sg' then return '#' + '0' + b + '0'
-        when 'st' then return '#' + '0' + b + b
-        when 'sy' then return '#' + b + b + '0'
-        when 'sv' then return '#' + b + '0' + b
-    bright = ['F', 'A', '6']
-    switch cls[2]
-      when 'b' then b = bright[0]
-      when 'h' then b = bright[1]
-      when 'i' then b = bright[2]
-    return basic_color(cls.slice(0,2), b)
+    bright = { 'b': 'F', 'h': 'A', 'i': '6'}
+    b = bright[cls[1]]
+    switch cls[0]
+      when 'r' then return '#' + b + '0' + '0'
+      when 'b' then return '#' + '0' +'0'+ b
+      when 'g' then return '#' + '0' + b + '0'
+      when 't' then return '#' + '0' + b + b
+      when 'y' then return '#' + b + b + '0'
+      when 'v' then return '#' + b + '0' + b
 
   canvas = document.getElementById('canvas')
   c = canvas.getContext('2d')
   c.fillStyle = '#BBB'
   c.fillRect(0, 0, 390, 390)
+  # size of rect,
+  s = 26
+
   row = 0
   while row < 13
     column = 0
     while column < 13
+      # coords of rect, +2 is for border
+      x = 30*column + 2
+      y = 30*row + 2
       tile_cls = arr[row][column]
-      if tile_cls.length == 3
-        if tile_cls == 'sqr'
-          color = '#666'
-        else if tile_cls == 'wll'
-          color = '#FFF'
-        else
-          color = color_from_cls(tile_cls)
-        c.fillStyle = color
-        c.fillRect(30*column + 2, 30*row + 2, 26, 26)
+
+      if tile_cls == 'sq'
+        color = '#666'
+      else if tile_cls == 'wl'
+        color = '#FFF'
+      else
+        color = color_from_cls(tile_cls)
+
+      c.fillStyle = color
+      c.fillRect(x, y, s, s)
+
+      if tile_cls.length > 2
+        c.lineWidth = 4
+        c.strokeStyle = color_from_cls(tile_cls.slice(2))
+        c.strokeRect(x, y, s, s)
+
       column++
     row++
 
@@ -68,6 +76,7 @@ main = ->
         if hash_blocks[key].toString() == [r, c].toString()
           return can_move(r + y, c + x, x, y)
       return true
+
     blocks = Object.keys(hash_blocks)
     q = 0
     while q < blocks.length
@@ -79,7 +88,6 @@ main = ->
 
     $(document).ready ->
       class_arr = convert(map_array, hash_blocks, hash_homes)
-      #create(class_arr)
       hey_ho_canvas(class_arr)
 
   # converts map array and homes hash to map of class names / used in displaying map
@@ -87,15 +95,15 @@ main = ->
     # returns class names from block name
     class_names = (value) ->
       switch value
-        when 0 then return 'sqr'
-        when 1 then return 'wll'
+        when 0 then return 'sq'
+        when 1 then return 'wl'
     # checks if there is block on given position, returns its name
     block_presence = (value) ->
       for key of hash_blocks
         if hash_blocks[key].toString() == value.toString()
           return key
       return false
-    #
+
     arr_classes = new Array(13)
 
     i = 0
@@ -111,18 +119,18 @@ main = ->
       i = hash_blocks[key][0]
       k = hash_blocks[key][1]
 
-      arr_classes[i][k] = 's' + key + 'b'
+      arr_classes[i][k] = key + 'b'
 
     for key of hash_homes
       i = hash_homes[key][0]
       k = hash_homes[key][1]
 
       if !block_presence([i, k])
-        arr_classes[i][k] = 's' + key + 'h'
+        arr_classes[i][k] = key + 'h'
       else if block_presence([i, k]) == key
-        arr_classes[i][k] = 's' + key + 'i'
+        arr_classes[i][k] = key + 'i'
       else
-        arr_classes[i][k] = arr_classes[i][k] + ' w' + key
+        arr_classes[i][k] = arr_classes[i][k] + key + 'h'
 
     return arr_classes
   # fill array with basic map values
@@ -140,20 +148,7 @@ main = ->
         k++
       i++
     return array
-  # displays map using array with class names
-  create = (arr) ->
-    $('#container').empty()
-    moves = 0
-    $('#counter span').text moves
-    r = 0
-    while r < 13
-      c = 0
-      while c < 13
-        $div = $('<div>', class: arr[r][c])
-        $('#container').append $div
-        c++
-      r++
-  #
+
   map_array = fill_map(map_array)
   map_array[6][6] = 1
   hash_homes  = { 'r': [5, 8], 'g': [11, 3], 'b': [8, 3] }
@@ -162,7 +157,6 @@ main = ->
   class_arr = convert(map_array, hash_blocks, hash_homes)
   console.log(class_arr)
   $(document).ready ->
-    #create(class_arr)
     hey_ho_canvas(class_arr)
 ####################################################################################
 ####################################################################################
