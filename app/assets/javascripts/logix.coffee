@@ -1,5 +1,42 @@
-find_solution = ->
-  console.log("Yeah")
+find_solution = (map_array, hash_homes, hash_blocks) ->
+  move = (dc, hash_b) ->
+    win_check = (hash_b, hash_h) ->
+      for key in hash_h
+        return false if hash_h[key] != hash_b[key]
+      return true
+    check_move = (x, y, new_hash)->
+      can_move = (r, c, x, y)->
+        return false if map_array[r][c] == 1
+        for key of new_hash
+          if new_hash[key].toString() == [r, c].toString()
+            return can_move(r + y, c + x, x, y)
+        return true
+      count = 0
+      for key of new_hash
+        r = new_hash[key][0] + y
+        c = new_hash[key][1] + x
+        if can_move(r, c, x, y)
+          new_hash[key] = [r, c]
+          count++
+      if count > 0 then return true else return false
+    container = []
+    if dc < 4
+      coords = [[-1,0], [0,-1], [1,0], [0,1]]
+      coords.forEach (coord) ->
+        x = coord[0]
+        y = coord[1]
+        new_hash = hash_b
+        if check_move(x, y, new_hash)
+          arr = []
+          arr.push(new_hash)
+          arr.push(move(dc+1, new_hash))
+          container.push(arr)
+        else
+          container.push("dead end")
+    else
+      container.push("line finished")
+    return container
+  console.log(move(0, hash_blocks))
 
 
 ####################################################################################
@@ -89,6 +126,7 @@ main = ->
     $(document).ready ->
       class_arr = convert(map_array, hash_blocks, hash_homes)
       hey_ho_canvas(class_arr)
+      find_solution(map_array, hash_homes, hash_blocks)
 
   # converts map array and homes hash to map of class names / used in displaying map
   convert = (arr_blocks, hash_blocks, hash_homes) ->
@@ -158,6 +196,7 @@ main = ->
   console.log(class_arr)
   $(document).ready ->
     hey_ho_canvas(class_arr)
+    find_solution(map_array, hash_homes, hash_blocks)
 ####################################################################################
 ####################################################################################
 main()
