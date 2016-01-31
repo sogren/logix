@@ -109,13 +109,6 @@ body{
   border-left:15px solid #111;
   right:35%;
 }
-#container > div{
-  width:30px;
-  height:30px;
-  border:2px solid #BBB;
-  display:inline-block;
-  float:left;
-}
 #container{
   width:390px;
   height:390px;
@@ -210,30 +203,4 @@ body{
 #camera-types div:active{
   background: #DDD;
 }
-.wall{ background: #FFF; }
 
-.srb{ background: #F00; }
-.sbb{ background: #00F; }
-.sgb{ background: #0F0; }
-.stb{ background: #0FF; }
-.syb{ background: #FF0; }
-.svb{ background: #F0F; }
-.srh{ background: #A00; }
-.sbh{ background: #00A; }
-.sgh{ background: #0A0; }
-.sth{ background: #0AA; }
-.syh{ background: #AA0; }
-.svh{ background: #A0A; }
-.sri{ background: #600; }
-.sbi{ background: #006; }
-.sgi{ background: #060; }
-.sti{ background: #066; }
-.syi{ background: #660; }
-.svi{ background: #606; }
-
-.wr{ border: 4px solid #A00 !important; }
-.wb{ border: 4px solid #00A !important; }
-.wg{ border: 4px solid #0A0 !important; }
-.wt{ border: 4px solid #0AA !important; }
-.wy{ border: 4px solid #AA0 !important; }
-.wv{ border: 4px solid #A0A !important; }
