@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  get 'level/:id' => 'levels#choose_level', as: 'level'
   get 'play' => 'static_pages#play', as: 'play'
   get 'about' => 'static_pages#about', as: 'about'
   get 'account' => 'users#account', as: 'account'

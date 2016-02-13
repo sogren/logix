@@ -1,5 +1,5 @@
 # display map with canvas cuz html is inefficient
-hey_ho_canvas = (arr) ->
+window.hey_ho_canvas = (arr) ->
   # return color depending on tile type / temporary i hope cuz its ugly as hell
   color_from_cls = (cls) ->
     bright = { 'b': 'F', 'h': 'A', 'i': '6'}
@@ -48,8 +48,12 @@ hey_ho_canvas = (arr) ->
 
 ####################################################################################
 ####################################################################################
-main = ->
+window.main = (hash_blocks, hash_homes, map_array) ->
   #
+  console.log("dr")
+  console.log(map_array)
+  console.log(hash_homes)
+  console.log(hash_blocks)
   document.onkeydown = (e) ->
     switch e.keyCode
       when 37
@@ -143,17 +147,18 @@ main = ->
       i++
     return array
 
-  map_array = fill_map(map_array)
-  map_array[6][6] = 1
-  hash_homes  = { 'r': [5, 8], 'g': [11, 3], 'b': [8, 3] }
-  hash_blocks = { 'r': [5, 8], 'g': [11, 2], 'b': [1, 7], 'y': [8, 3], 't': [5, 2], 'v': [2, 3] }
-
   class_arr = convert(map_array, hash_blocks, hash_homes)
-  console.log(class_arr)
   $(document).ready ->
     hey_ho_canvas(class_arr)
 ####################################################################################
 ####################################################################################
-main()
 
 
+window.heh = (blocks, homes, map) ->
+  valid_json = (some_json) ->
+    return JSON.parse(some_json.replace(/&quot;/g,'"'))
+  b = valid_json(blocks)
+  h = valid_json(homes)
+  m = valid_json(map)
+
+  main(b, h, m)

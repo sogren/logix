@@ -1,7 +1,7 @@
 var lvlnum=1;
 var string="";
 var stringarray=[];
-$(document).ready(function(){
+$("AERg").click(function(){
   $("#levelbutton").click(function(){
   if(lvlnum==1){
     create()
