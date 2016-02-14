@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   resources :topics, only: [:index, :show, :new, :create] do
     resources :answers, only: [:new, :create, :edit, :update]
   end
+  resources :levels, only: [:show, :new, :create]
 
   root 'static_pages#home'
 
-  get 'level/:id' => 'levels#choose_level', as: 'level'
   get 'play' => 'static_pages#play', as: 'play'
   get 'about' => 'static_pages#about', as: 'about'
   get 'account' => 'users#account', as: 'account'

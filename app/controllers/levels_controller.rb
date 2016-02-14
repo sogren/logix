@@ -1,8 +1,17 @@
 class LevelsController < ApplicationController
   respond_to :js
   expose(:level) { Level.find_by(id: params[:id], level_type: 'basic') }
+  expose(:new_level) { Level.new }
 
-  def choose_level
+  def new
+    render 'new', level: new_level
+  end
+
+  def create
+
+  end
+
+  def show
     b = level.blocks
     h = level.homes
     m = level.map

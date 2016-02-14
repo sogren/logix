@@ -43,8 +43,7 @@ def fill_map
   arr
 end
 
-hash_blocks = { r: [5, 8], g: [11, 2], b: [1, 7],
-                y: [8, 3], t: [5, 2],  v: [2, 3] }
+hash_blocks = { r: [5, 8], g: [11, 2], b: [1, 7] }
 hash_homes  = { r: [5, 8], g: [11, 3], b: [8, 3] }
 
 map_arr = fill_map
@@ -55,3 +54,7 @@ homes  = hash_homes.to_json
 map    = map_arr.to_json
 
 Level.create(blocks: blocks, homes: homes, map: map, level_type: 'basic')
+
+level1 = {
+
+}
