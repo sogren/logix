@@ -1,8 +1,8 @@
 # renders map using array with tile names
 # with canvas cuz html is inefficient
-
 window.render = (arr_blocks, hash_blocks = {}, hash_homes = {}) ->
-  # converts map array and homes hash to map of class names / used in displaying map
+  # converts array and hashes to map array filled with blocks names
+  # used directly in displaying map
   convert = (arr_blocks, hash_blocks, hash_homes) ->
     # returns class names from block name
     class_names = (value) ->
@@ -57,7 +57,7 @@ window.render = (arr_blocks, hash_blocks = {}, hash_homes = {}) ->
       when 'y' then return '#' + b + b + '0'
       when 'v' then return '#' + b + '0' + b
 
-
+  # create array using to map rendering
   map_array = convert(arr_blocks, hash_blocks, hash_homes)
 
   canvas = document.getElementById('canvas')

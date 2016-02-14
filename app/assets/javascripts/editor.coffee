@@ -1,9 +1,24 @@
-
-
-
 editor = ->
+  # sets mouse click event and returns xy number of clicked rect
+  get_clicked = ->
+    mouse_click = (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+      mx = e.clientX - offsetX
+      my = e.clientY - offsetY
+      x = Math.ceil(mx/30)
+      y = Math.ceil(my/30)
+      console.log(x)
+      console.log(y)
+    c_bound = canvas.getBoundingClientRect()
+    offsetX = c_bound.left
+    offsetY = c_bound.top
+    canvas.addEventListener("mousedown",mouse_click, false)
+  #
+  #
   new_level = ->
-    fill_map = (array) ->
+  # makes new level with only basic map layout
+    initial_map = (array) ->
       array = new Array(13)
       i = 0
       while i < 13
@@ -17,9 +32,17 @@ editor = ->
           k++
         i++
       return array
-    a = []
-    render(fill_map(a))
-  load_level = (level) ->
+    #
+    map_arr = initial_map([])
+    hash_blocks = {}
+    hash_homes = {}
+    x = 0
+    y = 0
+
+    render(map_arr, hash_blocks, hash_homes)
+    get_clicked()
+    console.log(x)
+    console.log(y)
 
   $(document).ready ->
     $("#new-level").click ->

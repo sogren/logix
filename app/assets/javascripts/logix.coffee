@@ -1,9 +1,5 @@
 window.main = (hash_blocks, hash_homes, map_array) ->
   #
-  console.log("dr")
-  console.log(map_array)
-  console.log(hash_homes)
-  console.log(hash_blocks)
   document.onkeydown = (e) ->
     switch e.keyCode
       when 37
@@ -36,13 +32,13 @@ window.main = (hash_blocks, hash_homes, map_array) ->
 
     $(document).ready ->
       render(map_array, hash_blocks, hash_homes)
-
+  #
   $(document).ready ->
     render(map_array, hash_blocks, hash_homes)
 ####################################################################################
 ####################################################################################
 
-
+# parsing data from json to correct format
 window.heh = (blocks, homes, map) ->
   valid_json = (some_json) ->
     return JSON.parse(some_json.replace(/&quot;/g,'"'))

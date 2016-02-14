@@ -1,0 +1,54 @@
+.triangle-tl, .triangle-bl, .triangle-tr,.triangle-br {
+  position:absolute;
+}
+.triangle-tl{
+  top:0;
+  left:0;
+  border-top:15px solid;
+  border-right:15px solid transparent !important;
+}
+.triangle-bl{
+  bottom:0;
+  left:0;
+  border-bottom:15px solid;
+  border-right:15px solid transparent !important;
+}
+.triangle-tr{
+  top:0;
+  right:0;
+  border-top:15px solid;
+  border-left:15px solid transparent !important;
+}
+.triangle-br{
+  bottom:0;
+  right:0;
+  border-bottom:15px solid;
+  border-left:15px solid transparent !important;
+}
+.wb{ border-color:#FFF; }
+#blocks, #homes{
+  > div{
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    position: relative;
+    line-height: 50px;
+    box-shadow: 0px 0px 1px 0px;
+  }
+}
+#blocks{
+  .r{ border-color:#F00; }
+  .g{ border-color:#0F0; }
+  .b{ border-color:#00F; }
+  .t{ border-color:#0FF; }
+  .y{ border-color:#FF0; }
+  .v{ border-color:#F0F; }
+}
+#homes{
+  .r{ border-color:#A00; }
+  .g{ border-color:#0A0; }
+  .b{ border-color:#00A; }
+  .t{ border-color:#0AA; }
+  .y{ border-color:#AA0; }
+  .v{ border-color:#A0A; }
+}
