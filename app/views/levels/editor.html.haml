@@ -1,38 +1,12 @@
+
 #game-wrapper
   #container.wrapper
     %canvas#canvas{width: "390", height: "390"}
 #functions-wrapper
-  #choose-time
-    #chooselevel
-      #new-level
-        %p
-          Previous level
-      #levels
-        #prevlvl
-          %p
-            Previous level
-        #nextlvl
-          %p
-            Next level
-      #levelbutton
-        %p
-          Level 1
   #play-time
-    #arrows
-      #counter.dirbutton
-        %p
-          Moves:
-        %span
-      %button#up.dirbutton
-        Up
-      #directions
-        %button#left.dirbutton
-          Left
-        %button#right.dirbutton
-          Right
-      %button#down.dirbutton
-        Down
-  #play-time
+    #walls
+      = button_triangles("wall")
+      = button_triangles("square")
     #blocks
       = button_triangles("red")
       = button_triangles("blue")
@@ -47,3 +21,7 @@
       = button_triangles("violet")
       = button_triangles("teal")
       = button_triangles("yellow")
+
+:javascript
+  new_level()
+  editor()

@@ -4,11 +4,6 @@ window.render = (arr_blocks, hash_blocks = {}, hash_homes = {}) ->
   # converts array and hashes to map array filled with blocks names
   # used directly in displaying map
   convert = (arr_blocks, hash_blocks, hash_homes) ->
-    # returns class names from block name
-    class_names = (value) ->
-      switch value
-        when 0 then return 'sq'
-        when 1 then return 'wl'
     # checks if there is block on given position, returns its name
     block_presence = (value) ->
       for key of hash_blocks
@@ -23,7 +18,7 @@ window.render = (arr_blocks, hash_blocks = {}, hash_homes = {}) ->
       k = 0
       arr_classes[i] = new Array(13)
       while k < 13
-        arr_classes[i][k] = class_names(arr_blocks[i][k])
+        arr_classes[i][k] = arr_blocks[i][k]
         k++
       i++
 

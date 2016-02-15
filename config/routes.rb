@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  get 'play' => 'static_pages#play', as: 'play'
-  get 'editor' => 'static_pages#editor', as: 'editor'
   get 'about' => 'static_pages#about', as: 'about'
+
+  get 'play' => 'levels#play', as: 'play'
+  get 'editor' => 'levels#editor', as: 'editor'
+
   get 'account' => 'users#account', as: 'account'
 end

@@ -3,8 +3,12 @@ class LevelsController < ApplicationController
   expose(:level) { Level.find_by(id: params[:id], level_type: 'basic') }
   expose(:new_level) { Level.new }
 
-  def new
-    render 'new', level: new_level
+  def play
+    render 'play'
+  end
+
+  def editor
+    render 'editor'
   end
 
   def create
