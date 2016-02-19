@@ -15,7 +15,7 @@ window.main = (hash_blocks, hash_homes, map_array) ->
   move = (x, y) ->
     # recursively checks if block can move to neighbouring tile
     can_move = (r, c, x, y)->
-      return false if map_array[r][c] == 1
+      return false if map_array[r][c] == 'wl'
       for key of hash_blocks
         if hash_blocks[key].toString() == [r, c].toString()
           return can_move(r + y, c + x, x, y)
@@ -35,16 +35,6 @@ window.main = (hash_blocks, hash_homes, map_array) ->
   #
   $(document).ready ->
     render(map_array, hash_blocks, hash_homes)
-    lvl = 1
-    $("#prevlvl").click ->
-      if lvl > 1 then lvl-- else lvl = 13
-      $("#levelbutton p").text "Level " + lvl
-    $("#nextlvl").click ->
-      if lvl < 13 then lvl++ else lvl = 1
-      $("#levelbutton p").text "Level " + lvl
-    $("#levelbutton").click ->
-      level = $("#levelbutton p").text().match(/\d+/)[0]
-      $.getScript '/levels/' + level
 ####################################################################################
 ####################################################################################
 # parsing data from json to correct format
@@ -54,7 +44,6 @@ window.heh = (blocks, homes, map) ->
   b = valid_json(blocks)
   h = valid_json(homes)
   m = valid_json(map)
-
   main(b, h, m)
 
 

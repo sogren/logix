@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :topics, only: [:index, :show, :new, :create] do
     resources :answers, only: [:new, :create, :edit, :update]
   end
-  resources :levels, only: [:show, :new, :create]
+  resources :levels, only: [:show, :create]
 
   root 'static_pages#home'
 

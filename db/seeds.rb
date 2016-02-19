@@ -34,27 +34,67 @@ def fill_map
     arr[i] = []
     13.times do |k|
       if i == 0 or i == 12 or k == 0 or k == 12
-        arr[i][k] = 1
+        arr[i][k] = 'wl'
       else
-        arr[i][k] = 0
+        arr[i][k] = 'sq'
       end
     end
   end
   arr
 end
 
-hash_blocks = { r: [5, 8], g: [11, 2], b: [1, 7] }
-hash_homes  = { r: [5, 8], g: [11, 3], b: [8, 3] }
+def make_level(hash_blocks, hash_homes, map_arr)
+  blocks = hash_blocks.to_json
+  homes  = hash_homes.to_json
+  map    = map_arr.to_json
+  Level.create(blocks: blocks, homes: homes, map: map, level_type: 'basic')
+end
 
-map_arr = fill_map
-map_arr[6][6] = 1
+#level 1
+hash_blocks = { r: [6, 1], g: [6, 11] }
+hash_homes = { r: [6, 8], g: [6, 4] }
+map_arr = [["wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl"], ["wl", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "wl"],["wl", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "wl"],["wl", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "wl"],["wl", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "wl"],["wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl"],["wl", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "wl"],["wl", "wl", "wl", "wl", "wl", "wl", "sq", "wl", "wl", "wl", "wl", "wl", "wl"],["wl", "sq", "sq", "sq", "sq", "sq", "wl", "sq", "sq", "sq", "sq", "sq", "wl"],["wl", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "wl"],["wl", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "wl"],["wl", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "sq", "wl"],["wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl", "wl"]]
 
-blocks = hash_blocks.to_json
-homes  = hash_homes.to_json
-map    = map_arr.to_json
+make_level(hash_blocks, hash_homes, map_arr)
 
-Level.create(blocks: blocks, homes: homes, map: map, level_type: 'basic')
+#level 2
+hash_blocks = {"r":[5,6],"g":[7,6]}
+hash_homes = {"r":[6,2],"g":[6,10]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","wl","wl","wl","sq","wl","wl","wl","sq","sq","wl"],["wl","sq","wl","sq","sq","sq","wl","sq","sq","sq","wl","sq","wl"],["wl","wl","sq","sq","wl","sq","sq","sq","wl","sq","sq","wl","wl"],["wl","wl","sq","wl","sq","wl","sq","wl","sq","wl","sq","wl","wl"],["wl","wl","sq","sq","wl","sq","sq","sq","wl","sq","sq","wl","wl"],["wl","sq","wl","sq","sq","sq","wl","sq","sq","sq","wl","sq","wl"],["wl","sq","sq","wl","wl","wl","sq","wl","wl","wl","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
 
-level1 = {
+make_level(hash_blocks, hash_homes, map_arr)
 
-}
+#level 3
+hash_blocks = {"v":[1,1],"t":[1,2],"y":[1,3],"r":[1,6],"g":[1,5],"b":[1,4]}
+hash_homes = {"r":[11,6],"g":[11,7],"b":[11,8],"v":[11,10],"y":[11,9],"t":[11,11]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","wl","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+
+make_level(hash_blocks, hash_homes, map_arr)
+
+#level 4
+hash_blocks = {"v":[5,7],"r":[6,5],"y":[7,5],"g":[7,6],"t":[7,7],"b":[6,7]}
+hash_homes = {"v":[6,1],"b":[5,1],"t":[4,1],"g":[3,1],"y":[2,1],"r":[1,1]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","wl","sq","wl","wl","wl","wl","wl","wl","wl","sq","wl"],["wl","sq","wl","sq","wl","sq","sq","sq","sq","sq","wl","sq","wl"],["wl","sq","wl","sq","wl","sq","wl","wl","wl","sq","wl","sq","wl"],["wl","sq","wl","sq","wl","sq","wl","sq","wl","sq","wl","sq","wl"],["wl","sq","wl","sq","wl","sq","wl","sq","wl","sq","wl","sq","wl"],["wl","sq","wl","sq","wl","sq","sq","sq","wl","sq","wl","sq","wl"],["wl","sq","wl","sq","wl","wl","wl","wl","wl","sq","wl","sq","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","sq","wl","sq","wl"],["wl","sq","wl","wl","wl","wl","wl","wl","wl","wl","wl","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+
+make_level(hash_blocks, hash_homes, map_arr)
+
+#level 5
+hash_blocks = {"r":[5,2],"g":[5,10]}
+hash_homes = {"r":[6,1],"g":[6,11]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","sq","wl","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+
+make_level(hash_blocks, hash_homes, map_arr)
+
+#level 6
+hash_blocks = {"r":[4,9],"g":[5,8],"b":[6,7],"y":[7,6],"t":[8,5],"v":[9,4]}
+hash_homes = {"v":[8,3],"t":[7,4],"y":[6,5],"b":[5,6],"g":[4,7],"r":[3,8]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","sq","wl","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","wl","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","wl","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","wl","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","wl","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","wl","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","sq","wl","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+
+make_level(hash_blocks, hash_homes, map_arr)
+
+#level 7
+hash_blocks = {"y":[5,6],"b":[6,7],"r":[7,6],"g":[6,5]}
+hash_homes = {"y":[7,7],"b":[7,5],"r":[5,5],"g":[5,7]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","wl","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+
+make_level(hash_blocks, hash_homes, map_arr)
