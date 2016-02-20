@@ -14,6 +14,13 @@ window.main = (hash_blocks, hash_homes, map_array) ->
   #
   move = (x, y) ->
     # recursively checks if block can move to neighbouring tile
+    win_check = ->
+      for key of hash_blocks
+        if hash_blocks[key].toString() != hash_homes[key].toString()
+          return false
+      return true
+
+    # recursively checks if block can move to neighbouring tile
     can_move = (r, c, x, y)->
       return false if map_array[r][c] == 'wl'
       for key of hash_blocks
@@ -32,6 +39,7 @@ window.main = (hash_blocks, hash_homes, map_array) ->
 
     $(document).ready ->
       render(map_array, hash_blocks, hash_homes)
+      if win_check() then alert("You won!")
   #
   $(document).ready ->
     render(map_array, hash_blocks, hash_homes)
