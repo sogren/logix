@@ -1,6 +1,7 @@
 class LevelsController < ApplicationController
   respond_to :js
-  expose(:level) { Level.find_by(id: params[:id], level_type: 'basic') }
+  expose(:level) { Level.find_by(id: params[:id],
+                                 level_type: params[:type] ) }
   expose(:new_level) { Level.new(logix_params) }
 
   def play
