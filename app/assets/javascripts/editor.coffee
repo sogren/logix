@@ -73,6 +73,7 @@ window.editor = ->
   hash_homes = {}
   chosen_rect = ""
 
+
   $("#walls > div").click ->
     wall = $(this).text()[0]
     if wall == "w" then wall = "wl" else wall = "sq"
