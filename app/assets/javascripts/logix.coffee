@@ -54,7 +54,6 @@ window.heh = (blocks, homes, map) ->
   m = valid_json(map)
   main(b, h, m)
 
-
 $(document).ready ->
   lvl = 1
   lvl_type = 0
