@@ -81,3 +81,4 @@ $(document).ready ->
       url: '/levels/' + level,
       data: { type: type }
     }
+
