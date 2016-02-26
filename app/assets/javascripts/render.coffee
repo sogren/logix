@@ -88,3 +88,4 @@ window.render = (arr_blocks, hash_blocks = {}, hash_homes = {}) ->
 
       column++
     row++
+
