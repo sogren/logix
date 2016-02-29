@@ -2,45 +2,33 @@
   #container.wrapper
     %canvas#canvas{width: "390", height: "390"}
 #functions-wrapper
-  #choose-time
-    #chooselevel
-      #levels
-        #easier
-          %p
-            Easier difficulty
-        #harder
-          %p
-            Harder difficulty
-      #typebutton
-        %p
-          Novice
-  #choose-time
-    #chooselevel
-      #levels
-        #prevlvl
-          %p
-            Previous level
-        #nextlvl
-          %p
-            Next level
-      #levelbutton
-        %p
-          Level 1
-  #play-time
-    #arrows
-      #counter.dirbutton
-        %p
-          Moves:
-        %span
-      %button#up.dirbutton
+  .btn-group
+    #easier.btn.btn-default
+      Easier difficulty
+    #harder.btn.btn-default
+      Harder difficulty
+    #typebutton.panel.panel-default
+      Novice
+  .btn-group
+    #prevlvl.btn.btn-default
+      Previous level
+    #nextlvl.btn.btn-default
+      Next level
+    #levelbutton.panel.panel-default.btn-default
+      Level 1
+  #counter.panel.panel-default.center-block{ style: "width: 200px"}
+    Moves:
+
+  .btn-group{ style: "margin-top: 40px" }
+    #left.btn.btn-default
+      Left
+    .btn-group.btn-group-vertical{ style: "margin-top: -17px" }
+      #up.btn.btn-default
         Up
-      #directions
-        %button#left.dirbutton
-          Left
-        %button#right.dirbutton
-          Right
-      %button#down.dirbutton
+      #down.btn.btn-default
         Down
+    #right.btn.btn-default
+      Right
 
 :javascript
   new_level()

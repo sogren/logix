@@ -61,21 +61,21 @@ $(document).ready ->
 
   $("#easier").click ->
     if lvl_type > 0 then lvl_type-- else lvl_type = 4
-    $("#typebutton p").text levels[lvl_type]
+    $("#typebutton").text levels[lvl_type]
   $("#harder").click ->
     if lvl_type < 4 then lvl_type++ else lvl_type = 0
-    $("#typebutton p").text levels[lvl_type]
+    $("#typebutton").text levels[lvl_type]
 
   $("#prevlvl").click ->
     if lvl > 1 then lvl-- else lvl = 25
-    $("#levelbutton p").text "Level " + lvl
+    $("#levelbutton").text "Level " + lvl
   $("#nextlvl").click ->
     if lvl < 25 then lvl++ else lvl = 1
-    $("#levelbutton p").text "Level " + lvl
+    $("#levelbutton").text "Level " + lvl
 
   $("#levelbutton").click ->
-    level = $("#levelbutton p").text().match(/\d+/)[0]
-    type  = $("#typebutton p").text().match(/\w+/)[0]
+    level = $("#levelbutton").text().match(/\d+/)[0]
+    type  = $("#typebutton").text().match(/\w+/)[0]
     $.ajax {
       type: 'get',
       url: '/levels/' + level,
