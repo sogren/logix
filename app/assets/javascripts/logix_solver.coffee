@@ -8,7 +8,6 @@ empty_map_array = ->
     i++
   return array
 
-
 # makes array with position values for block
 # position value is number of moves from block's home
 make_values_arr = (map_a, home_pos) ->
@@ -50,46 +49,117 @@ make_values_arr = (map_a, home_pos) ->
   return returned_array
 
 
-
-
-# makes move using [x, y] coords, returns changed objects
-make_move = (coords, map_a, blocks) ->
-  can_move = (r, c, x, y)->
-    return false if map_a[r][c] == 'wl'
-    for key of blocks_h
-      if blocks_h[key].toString() == [r, c].toString()
-        return can_move(r + y, c + x, x, y)
-    return true
-
-  blocks_h = $.extend([], blocks_h)
-
-  for key of blocks_h
-    r = blocks_h[key][0] + y
-    c = blocks_h[key][1] + x
-    if can_move(r, c, x, y)
-      blocks_h[key] = [r, c]
-
-  return blocks_h
-
 window.solve_level = (map_array, hash_blocks, hash_homes) ->
-  make_all_moves = ->
-    move([-1,0], map_a, blocks_h)
-    move([0,-1], map_a, blocks_h)
-    move([1,0], map_a, blocks_h)
-    move([0,1], map_a, blocks_h)
-  brute_force_until_block_in_home = (map_a, blocks_h, homes_h) ->
+  # makes move using [x, y] coords, returns changed objects
+  move = (coords, blocks) ->
+    can_move = (r, c, x, y)->
+      return false if map_array[r][c] == 'wl'
+      for key of temp_blocks_h
+        if temp_blocks_h[key].toString() == [r, c].toString()
+          return can_move(r + y, c + x, x, y)
+      return true
+
+    x = coords[0]
+    y = coords[1]
+    temp_blocks_h = $.extend({}, blocks)
+
+    for key of temp_blocks_h
+      r = temp_blocks_h[key][0] + y
+      c = temp_blocks_h[key][1] + x
+      if can_move(r, c, x, y)
+        temp_blocks_h[key] = [r, c]
+
+    return temp_blocks_h
+
+  # position value is number of moves from block's home
+  make_values_map_for_each_block = (map_a, blocks_h, homes_h) ->
     hash_with_values_arrays = {}
-
-    for key of blocks_h
-      values_map_for_block = empty_map_array()
-      values_map_for_block = make_values_arr(map_array, blocks_h[key])
+    for key of homes_h
+      values_map_for_block = make_values_arr(map_array, homes_h[key])
       hash_with_values_arrays[key] = $.extend([], values_map_for_block)
-    console.log(hash_with_values_arrays)
+    return hash_with_values_arrays
 
+  # return sum of values for each block
+  count_position_values = (blocks_h) ->
+    sum_values = 0
+    for key of blocks_h
+      x = blocks_h[key][0]
+      y = blocks_h[key][1]
+      value = values_hash[key][x][y]
+      sum_values += value
+    return sum_values
 
-  map_positions_values = (map_a, blocks_h, homes_h) ->
+  #
+  make_all_moves = (blocks_h, move_array) ->
+    arr = []
+    temp_move_arr = []
+    temp_move_arr = move_array.slice()
+    temp_move_arr.push("left")
+    arr.push([move([-1,0], blocks_h), temp_move_arr])
 
-  check_moves = (map_a, blocks_h, homes_h) ->
+    temp_move_arr = move_array.slice()
+    temp_move_arr.push("up")
+    arr.push([move([0,-1], blocks_h), temp_move_arr])
 
-  brute_force_until_block_in_home(map_array, hash_blocks, hash_homes)
+    temp_move_arr = move_array.slice()
+    temp_move_arr.push("right")
+    arr.push([move([1,0],  blocks_h), temp_move_arr])
+
+    temp_move_arr = move_array.slice()
+    temp_move_arr.push("down")
+    arr.push([move([0,1],  blocks_h), temp_move_arr])
+
+    return arr
+
+  #
+  make_move_chunk = (combinations_array, deep_control) ->
+    temp_combinations_array = []
+    if deep_control < 9
+      combinations_array.forEach (combination) ->
+        hash = combination[0]
+        value = count_position_values(hash)
+        move_array = combination[1]
+        temp_combinations_array = temp_combinations_array.concat(make_all_moves(hash, move_array))
+      return make_move_chunk(temp_combinations_array, deep_control + 1)
+    else
+      return combinations_array
+
+  #
+  find_best_combination = (combination) ->
+    main_array =  make_move_chunk(combination, 0)
+    best_combination = []
+    best_value = 1000
+    main_array.forEach (combination) ->
+      hash = combination[0]
+      combination_value = count_position_values(hash)
+      if combination_value < best_value
+        best_value = combination_value
+        best_combination = combination
+    return best_combination
+
+  #
+  move_controller = (combinations, i = 0) ->
+    console.log combinations
+    combination = find_best_combination(combinations)
+    console.log combination
+    value = count_position_values(combination[0])
+    if value > 0 && i < 3
+      console.log "START LOG"
+      console.log "END LOG"
+      console.log combination
+      move_controller([combination], i+1)
+    else
+     console.log combination[0]
+     console.log combination[1]
+
+  combinations_array = []
+  unique_positions_array = []
+
+  moves_array = []
+  combinations_array.push([hash_blocks, moves_array])
+  console.log(combinations_array)
+
+  values_hash = make_values_map_for_each_block(map_array, hash_blocks, hash_homes)
+  move_controller(combinations_array)
+
   console.log("done!")
