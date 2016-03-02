@@ -1,3 +1,22 @@
+compare_combinations = (arr1, arr2) ->
+  s_arr1 = []
+  arr1.forEach (combination1) ->
+    s_arr1.push(JSON.stringify(combination1[0]))
+  s_arr2 = []
+  arr2.forEach (combination2) ->
+    s_arr2.push(JSON.stringify(combination2[0]))
+
+  i = 0
+  while i < s_arr1.length
+    if s_arr2.includes(s_arr1[i])
+      arr1[i] = false
+    i++
+
+  arr1 = arr1.filter (element) ->
+    return !!element
+
+  return arr1
+
 # creates empty array with size of map -> used in creating map of values for blocks
 empty_map_array = ->
   array = new Array(13)
@@ -59,6 +78,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
           return can_move(r + y, c + x, x, y)
       return true
 
+    moved = 0
     x = coords[0]
     y = coords[1]
     temp_blocks_h = $.extend({}, blocks)
@@ -67,9 +87,13 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       r = temp_blocks_h[key][0] + y
       c = temp_blocks_h[key][1] + x
       if can_move(r, c, x, y)
+        moved++
         temp_blocks_h[key] = [r, c]
 
-    return temp_blocks_h
+    if moved > 0
+      return temp_blocks_h
+    else
+      return false
 
   # position value is number of moves from block's home
   make_values_map_for_each_block = (map_a, blocks_h, homes_h) ->
@@ -93,34 +117,39 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
   make_all_moves = (blocks_h, move_array) ->
     arr = []
     temp_move_arr = []
-    temp_move_arr = move_array.slice()
-    temp_move_arr.push("left")
-    arr.push([move([-1,0], blocks_h), temp_move_arr])
+    directions = [["left", [-1,0]],
+                  ["up",   [0,-1]],
+                  ["right",[1,0]],
+                  ["down", [0,1]]]
 
-    temp_move_arr = move_array.slice()
-    temp_move_arr.push("up")
-    arr.push([move([0,-1], blocks_h), temp_move_arr])
-
-    temp_move_arr = move_array.slice()
-    temp_move_arr.push("right")
-    arr.push([move([1,0],  blocks_h), temp_move_arr])
-
-    temp_move_arr = move_array.slice()
-    temp_move_arr.push("down")
-    arr.push([move([0,1],  blocks_h), temp_move_arr])
+    directions.forEach (direction) ->
+      temp_move_arr = move_array.slice()
+      temp_move_arr.push(direction[0])
+      make_move = move(direction[1], blocks_h)
+      if make_move
+        arr.push([make_move, temp_move_arr])
 
     return arr
 
   #
-  make_move_chunk = (combinations_array, deep_control) ->
+  make_move_chunk = (combinations_array, deep_control, older_combinations = []) ->
     temp_combinations_array = []
-    if deep_control < 9
+    if deep_control < 10
+      win = false
+      console.log deep_control
+      combinations_array.forEach (combination) ->
+        if count_position_values(combination[0]) == 0
+          win = true
+      if win
+        return combinations_array
       combinations_array.forEach (combination) ->
         hash = combination[0]
         value = count_position_values(hash)
         move_array = combination[1]
         temp_combinations_array = temp_combinations_array.concat(make_all_moves(hash, move_array))
-      return make_move_chunk(temp_combinations_array, deep_control + 1)
+      temp_combinations_array2 = []
+      temp_combinations_array2 = compare_combinations(temp_combinations_array, older_combinations)
+      return make_move_chunk(temp_combinations_array2, deep_control + 1, combinations_array)
     else
       return combinations_array
 
@@ -139,14 +168,10 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
 
   #
   move_controller = (combinations, i = 0) ->
-    console.log combinations
     combination = find_best_combination(combinations)
-    console.log combination
     value = count_position_values(combination[0])
     if value > 0 && i < 3
-      console.log "START LOG"
-      console.log "END LOG"
-      console.log combination
+      console.log 'kurwa'
       move_controller([combination], i+1)
     else
      console.log combination[0]
