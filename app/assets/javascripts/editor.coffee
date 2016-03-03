@@ -86,12 +86,12 @@ window.editor = ->
     chosen_rect = home
 
   $("#new-level").click ->
-    console.log(hash_homes)
-    console.log(hash_blocks)
-    console.log(map_arr)
-    console.log(JSON.stringify(hash_homes))
-    console.log(JSON.stringify(hash_blocks))
-    console.log(JSON.stringify(map_arr))
+    console.log 'hash_blocks = ' + JSON.stringify(hash_blocks) + "\n" +
+                'hash_homes =  ' + JSON.stringify(hash_homes) + "\n" +
+                'map_arr = ' + JSON.stringify(map_arr) + "\n" +
+                "type = 'Novice'" + "\n" +
+                "make_level(hash_blocks, hash_homes, map_arr, type)"
+
     h = JSON.stringify(hash_homes)
     b = JSON.stringify(hash_blocks)
     m = JSON.stringify(map_arr)

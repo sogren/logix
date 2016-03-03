@@ -93,6 +93,8 @@ $(document).ready ->
   $("#levelbutton").click ->
     level = $("#levelbutton").text().match(/\d+/)[0]
     type  = $("#typebutton").text().match(/\w+/)[0]
+    if type != 'Novice'
+      level = parseInt(level) + 20
     $.ajax {
       type: 'get',
       url: '/levels/' + level,
