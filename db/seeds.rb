@@ -115,8 +115,8 @@ type = 'Novice'
 make_level(hash_blocks, hash_homes, map_arr, type)
 
 #level 100
-hash_blocks = {"g":[4,4],"v":[7,7],"r":[7,9],"b":[5,5],"y":[5,6],"t":[6,6]}
-hash_homes = {"g":[10,9],"v":[2,6],"r":[10,2],"b":[9,10],"y":[9,3],"t":[5,9]}
+hash_blocks = {"g":[10,9],"v":[2,6],"r":[10,2],"b":[9,10],"y":[9,3],"t":[5,9]}
+hash_homes = {"g":[4,4],"v":[7,7],"r":[7,9],"b":[5,5],"y":[5,6],"t":[6,6]}
 map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","sq","wl","wl","sq","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","wl","wl","sq","sq","wl","wl","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","wl","wl","sq","wl","sq","wl","sq","wl","sq","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","wl","sq","sq","wl"],["wl","sq","wl","sq","wl","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","wl","wl","sq","wl","sq","wl","sq","wl","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
 type = 'Professional'
 

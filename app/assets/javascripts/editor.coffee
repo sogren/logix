@@ -86,18 +86,19 @@ window.editor = ->
     chosen_rect = home
 
   $("#new-level").click ->
-    #console.log(hash_homes)
-    #console.log(hash_blocks)
-    #console.log(map_arr)
-    #console.log(JSON.stringify(hash_homes))
-    #console.log(JSON.stringify(hash_blocks))
-    #console.log(JSON.stringify(map_arr))
-    #h = JSON.stringify(hash_homes)
-    #b = JSON.stringify(hash_blocks)
-    #m = JSON.stringify(map_arr)
-    #$.post 'levels', {
-    #  hash_homes: h
-    #  hash_blocks: b
-    #  map_arr: m
-    #}
-    solve_level(map_arr, hash_blocks, hash_homes)
+    console.log(hash_homes)
+    console.log(hash_blocks)
+    console.log(map_arr)
+    console.log(JSON.stringify(hash_homes))
+    console.log(JSON.stringify(hash_blocks))
+    console.log(JSON.stringify(map_arr))
+    h = JSON.stringify(hash_homes)
+    b = JSON.stringify(hash_blocks)
+    m = JSON.stringify(map_arr)
+    $.post 'levels', {
+      hash_homes: h
+      hash_blocks: b
+      map_arr: m
+    }
+    #solve_level(map_arr, hash_blocks, hash_homes)
+    #main(hash_blocks, hash_homes, map_arr)

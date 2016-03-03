@@ -5,7 +5,10 @@ compare_combinations = (arr1, arr2) ->
   s_arr2 = []
   arr2.forEach (combination2) ->
     s_arr2.push(JSON.stringify(combination2[0]))
-
+  console.log "START LOG"
+  console.log arr1
+  console.log "UNIQUE ARR"
+  console.log arr2
   i = 0
   while i < s_arr1.length
     if s_arr2.includes(s_arr1[i])
@@ -15,6 +18,10 @@ compare_combinations = (arr1, arr2) ->
   arr1 = arr1.filter (element) ->
     return !!element
 
+  console.log "MID"
+  console.log arr1
+  console.log arr1.length
+  console.log "END LOG"
   return arr1
 
 # creates empty array with size of map -> used in creating map of values for blocks
@@ -127,14 +134,20 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       temp_move_arr.push(direction[0])
       make_move = move(direction[1], blocks_h)
       if make_move
-        arr.push([make_move, temp_move_arr])
+        blocks_s  = JSON.stringify(make_move)
+        if !all_unique_combinations.includes(blocks_s)
+          all_unique_combinations.push(blocks_s)
+          arr.push([make_move, temp_move_arr])
 
     return arr
 
   #
-  make_move_chunk = (combinations_array, deep_control, older_combinations = []) ->
+  all_unique_combinations = []
+  times = 0
+  #
+  make_move_chunk = (combinations_array, deep_control) ->
     temp_combinations_array = []
-    if deep_control < 10
+    if deep_control < 7
       win = false
       console.log deep_control
       combinations_array.forEach (combination) ->
@@ -142,14 +155,18 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
           win = true
       if win
         return combinations_array
+      f_time1 = Date.now()
       combinations_array.forEach (combination) ->
         hash = combination[0]
         value = count_position_values(hash)
         move_array = combination[1]
         temp_combinations_array = temp_combinations_array.concat(make_all_moves(hash, move_array))
-      temp_combinations_array2 = []
-      temp_combinations_array2 = compare_combinations(temp_combinations_array, older_combinations)
-      return make_move_chunk(temp_combinations_array2, deep_control + 1, combinations_array)
+      f_time2 = Date.now()
+      times += (f_time2 - f_time1)/1000
+      console.log "UNIQUE LENGTH: " + all_unique_combinations.length + " TIME: " + times
+      console.log combinations_array.length
+      times = 0
+      return make_move_chunk(temp_combinations_array, deep_control + 1)
     else
       return combinations_array
 
@@ -168,14 +185,19 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
 
   #
   move_controller = (combinations, i = 0) ->
+    console.log '######################'
+    console.log 'ITERATION LEVEL: ' + (i+1)
+    console.log '######################'
+
     combination = find_best_combination(combinations)
     value = count_position_values(combination[0])
-    if value > 0 && i < 3
-      console.log 'kurwa'
+    all_unique_combinations = []
+    if value > 0 && i < 40
       move_controller([combination], i+1)
     else
      console.log combination[0]
      console.log combination[1]
+     return combination[1]
 
   combinations_array = []
   unique_positions_array = []
@@ -185,6 +207,38 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
   console.log(combinations_array)
 
   values_hash = make_values_map_for_each_block(map_array, hash_blocks, hash_homes)
-  move_controller(combinations_array)
-
+  solution = move_controller(combinations_array)
+  console.log solution.length
+  make_my_moves(solution)
   console.log("done!")
+
+
+window.make_my_moves = (array) ->
+    if array.length > 0
+      setTimeout (->
+        press(array.shift())
+        make_my_moves(array)
+      ), 50
+
+
+
+
+
+#   Dla kazdego bloku w koncowym slepym polozeniu sprawdzic sekwencje
+# wymagana do homa
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#

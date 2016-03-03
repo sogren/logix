@@ -1,6 +1,19 @@
 window.main = (hash_blocks, hash_homes, map_array) ->
   #
+  window.press = (e) ->
+    switch e
+      when "left"
+        move(-1,0)
+      when "up"
+        move(0,-1)
+      when "right"
+        move(1,0)
+      when "down"
+        move(0,1)
+    return
+  #
   document.onkeydown = (e) ->
+    console.log e.keyCode
     switch e.keyCode
       when 37
         move(-1,0)
@@ -44,6 +57,10 @@ window.main = (hash_blocks, hash_homes, map_array) ->
   $(document).ready ->
     render(map_array, hash_blocks, hash_homes)
 ####################################################################################
+  window.solve = ->
+    solve_level(map_array, hash_blocks, hash_homes)
+
+
 ####################################################################################
 # parsing data from json to correct format
 window.heh = (blocks, homes, map) ->
