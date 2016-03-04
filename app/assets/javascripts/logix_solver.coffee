@@ -1,29 +1,3 @@
-compare_combinations = (arr1, arr2) ->
-  s_arr1 = []
-  arr1.forEach (combination1) ->
-    s_arr1.push(JSON.stringify(combination1[0]))
-  s_arr2 = []
-  arr2.forEach (combination2) ->
-    s_arr2.push(JSON.stringify(combination2[0]))
-  console.log "START LOG"
-  console.log arr1
-  console.log "UNIQUE ARR"
-  console.log arr2
-  i = 0
-  while i < s_arr1.length
-    if s_arr2.includes(s_arr1[i])
-      arr1[i] = false
-    i++
-
-  arr1 = arr1.filter (element) ->
-    return !!element
-
-  console.log "MID"
-  console.log arr1
-  console.log arr1.length
-  console.log "END LOG"
-  return arr1
-
 # creates empty array with size of map -> used in creating map of values for blocks
 empty_map_array = ->
   array = new Array(13)
@@ -147,7 +121,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
   #
   make_move_chunk = (combinations_array, deep_control) ->
     temp_combinations_array = []
-    if deep_control < 7
+    if deep_control < 9
       win = false
       console.log deep_control
       combinations_array.forEach (combination) ->
@@ -164,7 +138,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       f_time2 = Date.now()
       times += (f_time2 - f_time1)/1000
       console.log "UNIQUE LENGTH: " + all_unique_combinations.length + " TIME: " + times
-      console.log combinations_array.length
+      console.log temp_combinations_array.length
       times = 0
       return make_move_chunk(temp_combinations_array, deep_control + 1)
     else
@@ -192,12 +166,16 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     combination = find_best_combination(combinations)
     value = count_position_values(combination[0])
     all_unique_combinations = []
-    if value > 0 && i < 40
+    if value > 0 && i < 0
       move_controller([combination], i+1)
     else
-     console.log combination[0]
-     console.log combination[1]
-     return combination[1]
+      console.log combination[0]
+      console.log combination[1]
+      return combination[1]
+
+  #
+  window.give_values = ->
+    console.log values_hash
 
   combinations_array = []
   unique_positions_array = []
@@ -213,6 +191,8 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
   console.log("done!")
 
 
+
+
 window.make_my_moves = (array) ->
     if array.length > 0
       setTimeout (->
@@ -220,25 +200,3 @@ window.make_my_moves = (array) ->
         make_my_moves(array)
       ), 50
 
-
-
-
-
-#   Dla kazdego bloku w koncowym slepym polozeniu sprawdzic sekwencje
-# wymagana do homa
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#

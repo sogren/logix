@@ -59,6 +59,10 @@ window.main = (hash_blocks, hash_homes, map_array) ->
 ####################################################################################
   window.solve = ->
     solve_level(map_array, hash_blocks, hash_homes)
+  window.give = ->
+    console.log map_array
+    console.log hash_blocks
+    console.log hash_homes
 
 
 ####################################################################################
