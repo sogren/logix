@@ -95,6 +95,10 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     return sum_values
 
   #
+  find_kurwa_uniqueness = (string) ->
+    all_unique_combinations
+
+  #
   make_all_moves = (blocks_h, move_array) ->
     arr = []
     temp_move_arr = []
@@ -200,3 +204,25 @@ window.make_my_moves = (array) ->
         make_my_moves(array)
       ), 50
 
+
+
+
+
+#   Dla kazdego bloku w koncowym slepym polozeniu sprawdzic sekwencje
+# wymagana do homa
+# ///
+# idac tym tropem moglbym od home sprawdzac kombinacje wymagana do skonczenia
+# uwzgledniajac ze gdy home jest otooczyny z 3 stron, to nadal mozna
+# wykonywac inne ruchy dowolna ilosc razy, bo to bloku nie wytraci
+# moglbym po tym znalezc liste pozycji z ktorych sekwencja moze byc skutecznie
+# wykonana i potem tylko szukac jak te pozycje osiagnac
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#

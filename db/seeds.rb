@@ -203,7 +203,40 @@ map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["
 type = 'Novice'
 make_level(hash_blocks, hash_homes, map_arr, type)
 
+#level 21
+hash_blocks =  {r:[8,5],g:[7,4],b:[5,8],y:[4,7]}
+hash_homes =  {b:[9,2],g:[3,10],r:[3,6],y:[9,6]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl","sq","wl"],["wl","sq","sq","wl","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","wl","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","wl","sq","sq","sq","sq","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","sq","wl","sq","wl"],["wl","sq","sq","sq","sq","wl","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","wl","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","wl","sq","sq","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+type = 'Novice'
+make_level(hash_blocks, hash_homes, map_arr, type)
 
+#level 22
+hash_blocks =  {b:[5,5],r:[7,5],y:[5,7],g:[7,7]}
+hash_homes =  {b:[10,9],r:[1,10],y:[11,2],g:[2,3]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","wl","sq","sq","sq","wl","sq","sq","sq","wl"],["wl","wl","wl","sq","wl","sq","sq","sq","wl","sq","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","wl","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","wl","wl","wl","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","wl","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","sq","wl","sq","sq","sq","wl","sq","wl","wl","wl"],["wl","sq","sq","sq","wl","sq","sq","sq","wl","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+type = 'Novice'
+make_level(hash_blocks, hash_homes, map_arr, type)
+
+#level 23
+hash_blocks =  {g:[6,5],y:[5,5],r:[7,5],b:[7,7],v:[5,7],t:[6,7]}
+hash_homes =  {g:[4,6],y:[7,9],r:[3,9],b:[5,3],v:[9,3],t:[8,6]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","wl","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+type = 'Novice'
+make_level(hash_blocks, hash_homes, map_arr, type)
+
+#level 24
+hash_blocks =  {g:[7,4],b:[7,8],r:[3,6],y:[11,2],v:[8,6],t:[11,10]}
+hash_homes =  {g:[7,5],b:[7,7],r:[6,6],y:[9,4],v:[11,6],t:[9,8]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","sq","wl","sq","sq","sq","wl","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","wl","sq","wl","sq","sq","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","sq","wl","sq","wl"],["wl","sq","sq","sq","wl","wl","sq","wl","wl","sq","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","wl","sq","sq","wl","sq","wl","sq","sq","wl","sq","wl"],["wl","sq","wl","sq","sq","wl","sq","wl","sq","sq","wl","sq","wl"],["wl","wl","sq","sq","wl","sq","sq","sq","wl","sq","sq","wl","wl"],["wl","wl","sq","sq","wl","sq","sq","sq","wl","sq","sq","wl","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+type = 'Novice'
+make_level(hash_blocks, hash_homes, map_arr, type)
+
+#level 25
+hash_blocks =  {y:[2,9],g:[3,8],b:[7,2],t:[8,10],r:[10,9]}
+hash_homes =  {y:[8,6],g:[4,7],b:[7,9],t:[9,3],r:[4,4]}
+map_arr = [["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","sq","wl","wl","sq","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","wl","sq","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","wl","wl","sq","sq","wl","wl","sq","sq","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","sq","sq","wl","wl","sq","wl","sq","wl","sq","wl","sq","wl"],["wl","sq","wl","sq","sq","sq","sq","sq","sq","wl","sq","sq","wl"],["wl","sq","wl","sq","wl","sq","wl","sq","sq","wl","sq","sq","wl"],["wl","sq","sq","wl","wl","sq","wl","sq","wl","sq","wl","sq","wl"],["wl","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","sq","wl"],["wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl","wl"]]
+type = 'Novice'
+make_level(hash_blocks, hash_homes, map_arr, type)
 
 #
 #        Professional
