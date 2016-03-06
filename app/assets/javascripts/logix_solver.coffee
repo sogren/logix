@@ -95,8 +95,22 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     return sum_values
 
   #
-  find_kurwa_uniqueness = (string) ->
-    all_unique_combinations
+  find_kurwa_uniqueness = (string, l, h) ->
+    if h - l == 1
+      if string != u[h] && string != u[l]
+        u.splice(h, 0, string)
+        return true
+      else
+        return false
+
+    p = Math.floor((h-l)/2+l)
+    if string > u[p]
+      return find_kurwa_uniqueness(string, p, h)
+    else if string < u[p]
+      return find_kurwa_uniqueness(string, l, p)
+    else
+      return false
+
 
   #
   make_all_moves = (blocks_h, move_array) ->
@@ -113,19 +127,21 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       make_move = move(direction[1], blocks_h)
       if make_move
         blocks_s  = JSON.stringify(make_move)
-        if !all_unique_combinations.includes(blocks_s)
-          all_unique_combinations.push(blocks_s)
+        h = all_unique_combinations.length
+        if find_kurwa_uniqueness(blocks_s, 0, h)
           arr.push([make_move, temp_move_arr])
 
     return arr
 
   #
-  all_unique_combinations = []
+  all_unique_combinations = ['zzzdummy']
   times = 0
+  u = all_unique_combinations
+  h = all_unique_combinations.length
   #
   make_move_chunk = (combinations_array, deep_control) ->
     temp_combinations_array = []
-    if deep_control < 9
+    if deep_control < 14
       win = false
       console.log deep_control
       combinations_array.forEach (combination) ->
