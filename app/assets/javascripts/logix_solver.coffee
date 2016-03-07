@@ -103,7 +103,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       else
         return false
 
-    p = Math.floor((h-l)/2+l)
+    p = (h+l)/2 | 0
     if string > u[p]
       return find_kurwa_uniqueness(string, p, h)
     else if string < u[p]
@@ -114,6 +114,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
 
   #
   make_all_moves = (blocks_h, move_array) ->
+    ff_time1 = Date.now()
     arr = []
     temp_move_arr = []
     directions = [["left", [-1,0]],
@@ -131,17 +132,20 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
         if find_kurwa_uniqueness(blocks_s, 0, h)
           arr.push([make_move, temp_move_arr])
 
+    ff_time2 = Date.now()
+    times2 += (ff_time2 - ff_time1)/1000
     return arr
 
   #
   all_unique_combinations = ['zzzdummy']
-  times = 0
+  times  = 0
+  times2 = 0
   u = all_unique_combinations
   h = all_unique_combinations.length
   #
   make_move_chunk = (combinations_array, deep_control) ->
     temp_combinations_array = []
-    if deep_control < 14
+    if deep_control
       win = false
       console.log deep_control
       combinations_array.forEach (combination) ->
@@ -151,22 +155,32 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
         return combinations_array
       f_time1 = Date.now()
       combinations_array.forEach (combination) ->
-        hash = combination[0]
-        value = count_position_values(hash)
+        hash       = combination[0]
         move_array = combination[1]
-        temp_combinations_array = temp_combinations_array.concat(make_all_moves(hash, move_array))
+        value = count_position_values(hash)
+        arr   = make_all_moves(hash, move_array)
+        arr.forEach (com) ->
+          temp_combinations_array.push(com)
       f_time2 = Date.now()
       times += (f_time2 - f_time1)/1000
-      console.log "UNIQUE LENGTH: " + all_unique_combinations.length + " TIME: " + times
-      console.log temp_combinations_array.length
+      console.log "UNIQUE LENGTH : " + all_unique_combinations.length + "\n" +
+                  "COMBINATIONS  : " + temp_combinations_array.length + "\n" +
+                  "TIME ALL      : " + times.toFixed(3) + "\n" +
+                  "TIME SEARCH   : " + times2.toFixed(3) + "\n" +
+                  "TIME DIFF     : " + (times-times2).toFixed(3) + "\n" +
+                  "TIME RATIO    : " + (times2/times).toFixed(3) + "\n" +
+
+      if times > 0.5
+        deep_control = false
       times = 0
-      return make_move_chunk(temp_combinations_array, deep_control + 1)
+      times2 = 0
+      return make_move_chunk(temp_combinations_array, deep_control)
     else
       return combinations_array
 
   #
   find_best_combination = (combination) ->
-    main_array =  make_move_chunk(combination, 0)
+    main_array =  make_move_chunk(combination, true)
     best_combination = []
     best_value = 1000
     main_array.forEach (combination) ->
@@ -185,8 +199,12 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
 
     combination = find_best_combination(combinations)
     value = count_position_values(combination[0])
-    all_unique_combinations = []
-    if value > 0 && i < 0
+    all_unique_combinations = ['zzzdummy']
+    times = 0
+    times2 = 0
+    u = all_unique_combinations
+    h = all_unique_combinations.length
+    if value > 0 && i < 15
       move_controller([combination], i+1)
     else
       console.log combination[0]
@@ -210,15 +228,13 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
   make_my_moves(solution)
   console.log("done!")
 
-
-
-
+# recursively makes moves provided in array
 window.make_my_moves = (array) ->
-    if array.length > 0
-      setTimeout (->
-        press(array.shift())
-        make_my_moves(array)
-      ), 50
+  if array.length > 0
+    setTimeout (->
+      press(array.shift())
+      make_my_moves(array)
+    ), 50
 
 
 
@@ -232,13 +248,3 @@ window.make_my_moves = (array) ->
 # wykonywac inne ruchy dowolna ilosc razy, bo to bloku nie wytraci
 # moglbym po tym znalezc liste pozycji z ktorych sekwencja moze byc skutecznie
 # wykonana i potem tylko szukac jak te pozycje osiagnac
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#

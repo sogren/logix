@@ -59,6 +59,8 @@ window.main = (hash_blocks, hash_homes, map_array) ->
 ####################################################################################
   window.solve = ->
     solve_level(map_array, hash_blocks, hash_homes)
+  window.solve2 = ->
+    solve_level2(map_array, hash_blocks, hash_homes)
   window.give = ->
     console.log map_array
     console.log hash_blocks
@@ -80,6 +82,8 @@ $(document).ready ->
   lvl_type = 0
   levels = ['Novice','Amateur','Advanced','Professional','Master']
 
+  $("#solve").click ->
+    solve()
   $("#easier").click ->
     if lvl_type > 0 then lvl_type-- else lvl_type = 4
     $("#typebutton").text levels[lvl_type]
