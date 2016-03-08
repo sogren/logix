@@ -50,6 +50,9 @@ make_values_arr = (map_a, home_pos) ->
 
 
 window.solve_level = (map_array, hash_blocks, hash_homes) ->
+  #
+  find_end_sequence = ->
+
   # makes move using [x, y] coords, returns changed objects
   move = (coords, blocks) ->
     can_move = (r, c, x, y)->
@@ -95,6 +98,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     return sum_values
 
   #
+  u = all_unique_combinations
   find_kurwa_uniqueness = (string, l, h) ->
     if h - l == 1
       if string != u[h] && string != u[l]
@@ -111,8 +115,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     else
       return false
 
-
-  #
+  # m
   make_all_moves = (blocks_h, move_array) ->
     ff_time1 = Date.now()
     arr = []
@@ -140,14 +143,11 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
   all_unique_combinations = ['zzzdummy']
   times  = 0
   times2 = 0
-  u = all_unique_combinations
-  h = all_unique_combinations.length
   #
   make_move_chunk = (combinations_array, deep_control) ->
     temp_combinations_array = []
     if deep_control
       win = false
-      console.log deep_control
       combinations_array.forEach (combination) ->
         if count_position_values(combination[0]) == 0
           win = true
@@ -163,14 +163,14 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
           temp_combinations_array.push(com)
       f_time2 = Date.now()
       times += (f_time2 - f_time1)/1000
-      console.log "UNIQUE LENGTH : " + all_unique_combinations.length + "\n" +
-                  "COMBINATIONS  : " + temp_combinations_array.length + "\n" +
-                  "TIME ALL      : " + times.toFixed(3) + "\n" +
-                  "TIME SEARCH   : " + times2.toFixed(3) + "\n" +
-                  "TIME DIFF     : " + (times-times2).toFixed(3) + "\n" +
-                  "TIME RATIO    : " + (times2/times).toFixed(3) + "\n" +
+      #console.log "UNIQUE LENGTH : " + all_unique_combinations.length + "\n" +
+      #            "COMBINATIONS  : " + temp_combinations_array.length + "\n" +
+      #            "TIME ALL      : " + times.toFixed(3) + "\n" +
+      #            "TIME SEARCH   : " + times2.toFixed(3) + "\n" +
+      #            "TIME DIFF     : " + (times-times2).toFixed(3) + "\n" +
+      #            "TIME RATIO    : " + (times2/times).toFixed(3) + "\n" +
 
-      if times > 0.5
+      if times > 1
         deep_control = false
       times = 0
       times2 = 0
@@ -204,23 +204,17 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     times2 = 0
     u = all_unique_combinations
     h = all_unique_combinations.length
-    if value > 0 && i < 15
+    if value > 0 && i < 10
       move_controller([combination], i+1)
     else
       console.log combination[0]
       console.log combination[1]
       return combination[1]
 
-  #
-  window.give_values = ->
-    console.log values_hash
 
   combinations_array = []
-  unique_positions_array = []
-
   moves_array = []
   combinations_array.push([hash_blocks, moves_array])
-  console.log(combinations_array)
 
   values_hash = make_values_map_for_each_block(map_array, hash_blocks, hash_homes)
   solution = move_controller(combinations_array)
