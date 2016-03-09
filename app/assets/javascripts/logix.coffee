@@ -1,5 +1,5 @@
 window.main = (hash_blocks, hash_homes, map_array) ->
-  #
+  # makes move with given direction
   window.press = (e) ->
     switch e
       when "left"
@@ -11,7 +11,7 @@ window.main = (hash_blocks, hash_homes, map_array) ->
       when "down"
         move(0,1)
     return
-  #
+  # binds move to arrow keys
   document.onkeydown = (e) ->
     console.log e.keyCode
     switch e.keyCode
@@ -26,7 +26,7 @@ window.main = (hash_blocks, hash_homes, map_array) ->
     return
   #
   move = (x, y) ->
-    # recursively checks if block can move to neighbouring tile
+    # checks if position is winning
     win_check = ->
       for key of hash_blocks
         if hash_blocks[key].toString() != hash_homes[key].toString()
@@ -61,10 +61,6 @@ window.main = (hash_blocks, hash_homes, map_array) ->
     solve_level(map_array, hash_blocks, hash_homes)
   window.solve2 = ->
     solve_level2(map_array, hash_blocks, hash_homes)
-  window.give = ->
-    console.log map_array
-    console.log hash_blocks
-    console.log hash_homes
 
 
 ####################################################################################
@@ -98,6 +94,9 @@ $(document).ready ->
     if lvl < 25 then lvl++ else lvl = 1
     $("#levelbutton").text "Level " + lvl
 
+  $("#directions span").click ->
+    press(this.id)
+
   $("#levelbutton").click ->
     level = $("#levelbutton").text().match(/\d+/)[0]
     type  = $("#typebutton").text().match(/\w+/)[0]
@@ -108,3 +107,4 @@ $(document).ready ->
       url: '/levels/' + level,
       data: { type: type }
     }
+

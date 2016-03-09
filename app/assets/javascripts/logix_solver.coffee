@@ -97,7 +97,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       sum_values += value
     return sum_values
 
-  #
+  # checks if move is unique or was already done
   u = all_unique_combinations
   find_kurwa_uniqueness = (string, l, h) ->
     if h - l == 1
@@ -115,7 +115,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     else
       return false
 
-  # m
+  # makes possible moves without repetitions
   make_all_moves = (blocks_h, move_array) ->
     ff_time1 = Date.now()
     arr = []
@@ -139,8 +139,8 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     times2 += (ff_time2 - ff_time1)/1000
     return arr
 
-  #
-  all_unique_combinations = ['zzzdummy']
+  # without dummy unique check is breaking
+  all_unique_combinations = ['dummy']
   times  = 0
   times2 = 0
   #
@@ -178,7 +178,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     else
       return combinations_array
 
-  #
+  # finds combination closest to win
   find_best_combination = (combination) ->
     main_array =  make_move_chunk(combination, true)
     best_combination = []
@@ -199,7 +199,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
 
     combination = find_best_combination(combinations)
     value = count_position_values(combination[0])
-    all_unique_combinations = ['zzzdummy']
+    all_unique_combinations = ['dummy']
     times = 0
     times2 = 0
     u = all_unique_combinations

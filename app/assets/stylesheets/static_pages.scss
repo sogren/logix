@@ -59,6 +59,7 @@ body{
   width:50%;
   float:right;
 }
+// main page gallery
 #gallery{
   margin:40px;
   width:70%;
@@ -73,7 +74,6 @@ body{
   position:absolute;
   display:block;
 }
-
 #previous, #next{
   width:18%;
   height:100%;
@@ -109,28 +109,7 @@ body{
   border-left:15px solid #111;
   right:35%;
 }
-#container{
-  width:390px;
-  height:390px;
-  margin:auto;
-  margin-top:10px;
-  -webkit-transition: all 0.5s ease-in-out;
-     -moz-transition: all 0.5s ease-in-out;
-       -o-transition: all 0.5s ease-in-out;
-      transition: all 0.5s ease-in-out;
-}
-.row{
-  width:auto;
-  height:34px;
-}
-.square{
-  width:30px;
-  height:30px;
-  border:2px solid #BBB;
-  display:inline-block;
-  float:left;
-  background:#666;
-}
+//
 #mainwrapper{
   margin-top:50px;
   min-height:450px;
@@ -171,36 +150,3 @@ body{
 #play-time{
   clear: both;
 }
-#camera-title{
-  width:33%;
-  height:50px;
-  box-sizing:border-box;
-  background:#EEE;
-  border:2px outset #DDD;
-  text-align:center;
-  line-height:42px;
-  cursor:default;
-  margin:auto;
-  margin-top:120px;
-  margin-bottom:40px;
-}
-#camera-types div{
-  width:33%;
-  height:50px;
-  box-sizing:border-box;
-  background:#EEE;
-  border:2px outset #DDD;
-  text-align:center;
-  line-height:42px;
-  cursor:default;
-  margin:auto;
-  margin-bottom:40px;
-  display:inline-block;
-}
-#camera-types div:hover{
-  border: 2px inset #DDD;
-}
-#camera-types div:active{
-  background: #DDD;
-}
-

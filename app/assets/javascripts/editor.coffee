@@ -18,16 +18,17 @@ window.new_level = ->
   map_arr = initial_map([])
   render(map_arr, {}, {})
 window.editor = ->
+  # support funciton to remove block duplication
   remove_others_from_hash = (hash, coords) ->
     for key, value of hash
       if String(value) == String(coords)
         delete hash[key]
-
+  # place wall on map
   wall_validator = (type, coords) ->
     remove_others_from_hash(hash_blocks, coords)
     remove_others_from_hash(hash_homes, coords)
     map_arr[coords[0]][coords[1]] = type
-
+  # place block or home on map
   validator = (hash, type, coords) ->
     if hash[type] == coords
       delete hash[type]
@@ -40,6 +41,7 @@ window.editor = ->
   between = (num, range) ->
     return true if num > range[0] && num < range[1]
     return false
+  # binds event to mouse click - gives the possibility to edit map
   set_event = ->
     mouse_click = (e) ->
       e.preventDefault()
@@ -73,7 +75,7 @@ window.editor = ->
   hash_homes = {}
   chosen_rect = ""
 
-
+  #
   $("#walls > div").click ->
     wall = $(this).text()[0]
     if wall == "w" then wall = "wl" else wall = "sq"
