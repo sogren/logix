@@ -4,7 +4,7 @@ class LevelsController < ApplicationController
   expose(:new_level) { Level.new(logix_params) }
 
   def play
-    if params[:id]
+    if level
       b = level.blocks
       h = level.homes
       m = level.map

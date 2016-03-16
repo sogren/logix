@@ -31,7 +31,7 @@
         Down
     %span#right.btn.btn-default
       Right
-- if blocks
+- if defined?(blocks)
   :javascript
     heh('#{blocks}','#{homes}','#{map}')
 - else
