@@ -1,23 +1,14 @@
 class AnswersController < ApplicationController
-  def new
-    @answer = Answer.new
-  end
+  expose(:answer) { current_user.answers.build(answer_params) }
 
   def create
-    @answer = current_user.answers.build(answer_params)
-    if @answer.save
+    if answer.save
       flash[:info] = "success"
       redirect_to :back
     else
       flash[:warning] = "failure"
       redirect_to :back
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   private
