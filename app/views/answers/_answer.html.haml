@@ -1,12 +1,6 @@
-#topic-display
-  #topic-header
-    = response.title
-  #info.clearfix
-    #author
-      %p
-        = "Topic by: #{response.author}"
-    #when
-      %p
-        = "Last post #{time_ago_in_words(response.created_at)} ago"
-  #content
-    = response.content
+#author
+  %p
+    Answer by:
+    = link_to "#{answer.author.username}", answer.author
+#content
+  = answer.content

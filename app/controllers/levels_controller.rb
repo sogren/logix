@@ -17,10 +17,6 @@ class LevelsController < ApplicationController
     end
   end
 
-  def editor
-    render 'editor'
-  end
-
   def create
     blocks = params[:hash_blocks]
     homes = params[:hash_homes]

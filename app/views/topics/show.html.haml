@@ -13,13 +13,7 @@
     = topic.content
 #answers
   #topic-display
-    - topic.answers.each do |a|
-      #author
-        %p
-          Answer by:
-          = link_to "#{a.author.username}", a.author
-      #content
-        = a.content
+    = render topic.answers
 
 #content
   = render 'answers/new_answer'

@@ -1,7 +1,8 @@
 class TopicsController < ApplicationController
   before_filter(only: [:new, :create]) { require_login(topics_path) }
-  expose(:topic)
-  expose(:topics) { Topic.order(created_at: :desc) }
+  expose(:new_topic)
+  expose(:topic)  { Topic.includes(answers: [:author]).find(params[:id]) }
+  expose(:topics) { Topic.includes(:answers).order(created_at: :desc) }
   expose(:answer) { Answer.new }
 
   def show
