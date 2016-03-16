@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'about' => 'static_pages#about', as: 'about'
 
-  get 'play' => 'levels#play', as: 'play'
+  get 'play/(:id)' => 'levels#play', as: 'play'
   get 'editor' => 'levels#editor', as: 'editor'
 
   get 'account' => 'users#account', as: 'account'

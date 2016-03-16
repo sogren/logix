@@ -163,12 +163,12 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
           temp_combinations_array.push(com)
       f_time2 = Date.now()
       times += (f_time2 - f_time1)/1000
-      #console.log "UNIQUE LENGTH : " + all_unique_combinations.length + "\n" +
-      #            "COMBINATIONS  : " + temp_combinations_array.length + "\n" +
-      #            "TIME ALL      : " + times.toFixed(3) + "\n" +
-      #            "TIME SEARCH   : " + times2.toFixed(3) + "\n" +
-      #            "TIME DIFF     : " + (times-times2).toFixed(3) + "\n" +
-      #            "TIME RATIO    : " + (times2/times).toFixed(3) + "\n" +
+      console.log "UNIQUE LENGTH : " + all_unique_combinations.length + "\n" +
+                  "COMBINATIONS  : " + temp_combinations_array.length + "\n" +
+                  "TIME ALL      : " + times.toFixed(3) + "\n" +
+                  "TIME SEARCH   : " + times2.toFixed(3) + "\n" +
+                  "TIME DIFF     : " + (times-times2).toFixed(3) + "\n" +
+                  "TIME RATIO    : " + (times2/times).toFixed(3) + "\n" +
 
       if times > 1
         deep_control = false

@@ -31,6 +31,9 @@
         Down
     %span#right.btn.btn-default
       Right
-
-:javascript
-  new_level()
+- if blocks
+  :javascript
+    heh('#{blocks}','#{homes}','#{map}')
+- else
+  :javascript
+    new_level()

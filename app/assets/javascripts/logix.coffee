@@ -104,7 +104,7 @@ $(document).ready ->
       level = parseInt(level) + 20
     $.ajax {
       type: 'get',
-      url: '/levels/' + level,
-      data: { type: type }
+      url: '/play/' + level,
+      dataType: "script"
     }
 
