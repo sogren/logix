@@ -1,19 +1,19 @@
 #topic-display
   #topic-header
-    = @topic.title
+    = topic.title
   #info.clearfix
     #author
       %p
         Topic by:
-        = link_to "#{@topic.creator}", @topic.author
+        = link_to "#{topic.creator}", topic.author
     #when
       %p
-        = "Last post #{time_ago_in_words(@topic.created_at)} ago"
+        = "Last post #{time_ago_in_words(topic.created_at)} ago"
   #content
-    = @topic.content
+    = topic.content
 #answers
   #topic-display
-    - @topic.answers.each do |a|
+    - topic.answers.each do |a|
       #author
         %p
           Answer by:

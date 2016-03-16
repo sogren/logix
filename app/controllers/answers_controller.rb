@@ -4,11 +4,10 @@ class AnswersController < ApplicationController
   def create
     if answer.save
       flash[:info] = "success"
-      redirect_to :back
     else
       flash[:warning] = "failure"
-      redirect_to :back
     end
+      redirect_to :back
   end
 
   private

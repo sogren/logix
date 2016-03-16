@@ -1,18 +1,11 @@
 class TopicsController < ApplicationController
   before_filter(only: [:new, :create]) { require_login(topics_path) }
+  expose(:topic)
   expose(:topics) { Topic.order(created_at: :desc) }
   expose(:answer) { Answer.new }
 
-  def index
-  end
-
-  def new
-    @topic = Topic.new
-  end
-
   def show
-    @topic = Topic.find(params[:id])
-    @topic.update(counter: @topic.counter + 1)
+    topic.counter += 1
   end
 
   def create

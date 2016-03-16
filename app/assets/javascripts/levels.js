@@ -2,3 +2,4 @@
 //= require logix
 //= require editor
 //= require logix_solver
+//= require alert
