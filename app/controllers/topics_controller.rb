@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   expose(:answer) { Answer.new }
 
   def show
-    topic.counter += 1
+    topic.update(counter: topic.counter+1)
   end
 
   def create
