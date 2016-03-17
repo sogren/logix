@@ -4,7 +4,7 @@
 imgnum = 1
 img = 'image'
 
-$(document).ready ->
+ready = ->
   $("#next").click ->
     $("#" + img + imgnum).stop().animate opacity: 0
     if imgnum !=3 then (imgnum += 1) else (imgnum = 1)
@@ -25,3 +25,7 @@ $(document).ready ->
     $("#" + img + imgnum).stop().animate opacity: 1
   ), 3000
   return
+
+
+$(document).ready ready
+$(document).on 'page:load', ready

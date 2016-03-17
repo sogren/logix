@@ -50,12 +50,10 @@ window.main = (hash_blocks, hash_homes, map_array) ->
         hash_blocks[blocks[q]] = [r, c]
       q++
 
-    $(document).ready ->
-      render(map_array, hash_blocks, hash_homes)
-      if win_check() then alert("You won!")
-  #
-  $(document).ready ->
     render(map_array, hash_blocks, hash_homes)
+    if win_check() then alert("You won!")
+  #
+  render(map_array, hash_blocks, hash_homes)
 ####################################################################################
   window.solve = ->
     solve_level(map_array, hash_blocks, hash_homes)
@@ -70,7 +68,7 @@ window.heh = (blocks, homes, map) ->
   m = valid_json(map)
   main(b, h, m)
 
-$(document).ready ->
+ready = ->
   lvl = 1
   lvl_type = 0
   levels = ['Novice','Amateur','Advanced','Professional','Master']
@@ -108,3 +106,5 @@ $(document).ready ->
       dataType: "script"
     }
 
+$(document).ready ready
+$(document).on 'page:load', ready
