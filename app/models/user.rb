@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
 
   has_many :topics, foreign_key: :author_id
   has_many :answers, foreign_key: :author_id
+  has_many :levels, foreign_key: :creator_id
 
 end

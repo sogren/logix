@@ -59,9 +59,6 @@ window.main = (hash_blocks, hash_homes, map_array) ->
 ####################################################################################
   window.solve = ->
     solve_level(map_array, hash_blocks, hash_homes)
-  window.solve2 = ->
-    solve_level2(map_array, hash_blocks, hash_homes)
-
 
 ####################################################################################
 # parsing data from json to correct format
@@ -80,9 +77,11 @@ $(document).ready ->
 
   $("#solve").click ->
     solve()
+
   $("#easier").click ->
     if lvl_type > 0 then lvl_type-- else lvl_type = 4
     $("#typebutton").text levels[lvl_type]
+
   $("#harder").click ->
     if lvl_type < 4 then lvl_type++ else lvl_type = 0
     $("#typebutton").text levels[lvl_type]
@@ -90,6 +89,7 @@ $(document).ready ->
   $("#prevlvl").click ->
     if lvl > 1 then lvl-- else lvl = 25
     $("#levelbutton").text "Level " + lvl
+
   $("#nextlvl").click ->
     if lvl < 25 then lvl++ else lvl = 1
     $("#levelbutton").text "Level " + lvl
@@ -101,7 +101,7 @@ $(document).ready ->
     level = $("#levelbutton").text().match(/\d+/)[0]
     type  = $("#typebutton").text().match(/\w+/)[0]
     if type != 'Novice'
-      level = parseInt(level) + 20
+      level = parseInt(level) + 25
     $.ajax {
       type: 'get',
       url: '/play/' + level,

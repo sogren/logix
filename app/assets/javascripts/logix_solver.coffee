@@ -97,9 +97,8 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       sum_values += value
     return sum_values
 
-  # checks if move is unique or was already done
-  u = all_unique_combinations
-  find_kurwa_uniqueness = (string, l, h) ->
+  # checks if move is unique or was already done // l - low, h - high
+  check_uniqueness = (string, l, h) ->
     if h - l == 1
       if string != u[h] && string != u[l]
         u.splice(h, 0, string)
@@ -109,9 +108,9 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
 
     p = (h+l)/2 | 0
     if string > u[p]
-      return find_kurwa_uniqueness(string, p, h)
+      return check_uniqueness(string, p, h)
     else if string < u[p]
-      return find_kurwa_uniqueness(string, l, p)
+      return check_uniqueness(string, l, p)
     else
       return false
 
@@ -132,7 +131,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       if make_move
         blocks_s  = JSON.stringify(make_move)
         h = all_unique_combinations.length
-        if find_kurwa_uniqueness(blocks_s, 0, h)
+        if check_uniqueness(blocks_s, 0, h)
           arr.push([make_move, temp_move_arr])
 
     ff_time2 = Date.now()
@@ -141,6 +140,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
 
   # without dummy unique check is breaking
   all_unique_combinations = ['dummy']
+  u = all_unique_combinations
   times  = 0
   times2 = 0
   #

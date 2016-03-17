@@ -88,6 +88,14 @@ window.editor = ->
     chosen_rect = home
 
   $("#new-level").click ->
+    h = JSON.stringify(hash_homes)
+    b = JSON.stringify(hash_blocks)
+    m = JSON.stringify(map_arr)
+    $.post 'levels', {
+      hash_homes: h
+      hash_blocks: b
+      map_arr: m
+    }
     hash_blocks_string = 'hash_blocks =  ' + JSON.stringify(hash_blocks)
     hash_blocks_string = hash_blocks_string.replace(/['"]+/g,'')
     hash_homes_string = 'hash_homes =  ' + JSON.stringify(hash_homes)
@@ -98,13 +106,5 @@ window.editor = ->
                 "type = 'Novice'" + "\n" +
                 "make_level(hash_blocks, hash_homes, map_arr, type)"
 
-    h = JSON.stringify(hash_homes)
-    b = JSON.stringify(hash_blocks)
-    m = JSON.stringify(map_arr)
-    $.post 'levels', {
-      hash_homes: h
-      hash_blocks: b
-      map_arr: m
-    }
     #solve_level(map_arr, hash_blocks, hash_homes)
     #main(hash_blocks, hash_homes, map_arr)
