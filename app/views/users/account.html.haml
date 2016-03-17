@@ -1,6 +1,11 @@
 %h1
   Manage your account:
 %h2
-  = user.username
+  = link_to "Your profile", current_user
 %h3
   = link_to 'Update your account', edit_user_registration_path
+%h2
+  My levels:
+  %h4.lists
+    - current_user.levels.order("created_at").each do |l|
+      = link_to "Level #{l.id}", play_path(l)

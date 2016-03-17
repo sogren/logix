@@ -7,13 +7,19 @@
     = user.email
   %h3
     Latest topics:
-    #latest-topics
+    #user-topics.lists
       %h4
         - user.topics.each do |t|
           = link_to "#{t.title}", t
   %h3
     Latest answers:
-    #latest-topics
+    #user-answers.lists
       %h4
         - user.answers.each do |a|
           = link_to "#{a.topic.title}", a.topic
+  %h3
+    My levels:
+    #user-levels.lists
+      %h4
+        - user.levels.order("created_at").each do |l|
+          = link_to "Level #{l.id}", play_path(l)
