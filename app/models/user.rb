@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   has_many :answers, foreign_key: :author_id
   has_many :levels, foreign_key: :creator_id
 
+  has_many :solving_informations, foreign_key: :solver_id
+  has_many :solved_levels, through: :solving_informations
 end

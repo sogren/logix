@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317171751) do
+ActiveRecord::Schema.define(version: 20160318124041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 20160317171751) do
     t.datetime "updated_at", null: false
     t.integer  "creator_id"
   end
+
+  create_table "solving_informations", force: :cascade do |t|
+    t.integer  "solver_id",                              null: false
+    t.integer  "solved_level_id",                        null: false
+    t.string   "status",          default: "unfinished", null: false
+    t.integer  "solving_time"
+    t.integer  "difficulty"
+    t.integer  "moves"
+    t.integer  "tries",                                  null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "solving_informations", ["solved_level_id"], name: "index_solving_informations_on_solved_level_id", using: :btree
+  add_index "solving_informations", ["solver_id"], name: "index_solving_informations_on_solver_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.integer  "author_id"
