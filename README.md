@@ -8,6 +8,6 @@ Logix game is a logic game. I made it because i wanted to make an algorithm to s
  * Account creation, and management
  * Creating your own levels
  * Simple forum to share your thoughts
- * **And my _wounderful_** solving algorithm!
+ * **And my _wounderful_ solving algorithm!**
 No more spending days on thinking how to solve a level! Just one click and its done! But it might kill your computer on few levels
 
