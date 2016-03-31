@@ -1,4 +1,5 @@
 class LevelsController < ApplicationController
+  before_filter(only: [:create]) { require_login(play_path) }
   respond_to :js, :html
   expose(:level)     { Level.find_by(id: params[:id]) }
   expose(:new_level) { Level.new(logix_params) }
