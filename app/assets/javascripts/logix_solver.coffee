@@ -97,6 +97,17 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       sum_values += value
     return sum_values
 
+  # return sum of values for each block
+  highest_positions_value = (blocks_h) ->
+    h_value = 0
+    for key of blocks_h
+      x = blocks_h[key][0]
+      y = blocks_h[key][1]
+      value = values_hash[key][x][y]
+      if value > h_value
+        h_value = value
+    return h_value
+
   # checks if move is unique or was already done // l - low, h - high
   check_uniqueness = (string, l, h) ->
     if h - l == 1
@@ -179,15 +190,26 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
       return combinations_array
 
   # finds combination closest to win
-  find_best_combination = (combination) ->
-    main_array =  make_move_chunk(combination, true)
+  find_best_combination = (combinations_array) ->
     best_combination = []
     best_value = 1000
-    main_array.forEach (combination) ->
+    combinations_array.forEach (combination) ->
       hash = combination[0]
       combination_value = count_position_values(hash)
       if combination_value < best_value
         best_value = combination_value
+        best_combination = combination
+    return best_combination
+
+  # finds combination closest to win
+  find_best_combination2 = (combinations_array) ->
+    best_combination = []
+    highest_value = 1000
+    combinations_array.forEach (combination) ->
+      hash = combination[0]
+      value = highest_positions_value(hash)
+      if value < highest_value
+        highest_value = value
         best_combination = combination
     return best_combination
 
@@ -197,19 +219,21 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     console.log 'ITERATION LEVEL: ' + (i+1)
     console.log '######################'
 
-    combination = find_best_combination(combinations)
-    value = count_position_values(combination[0])
+    combinations_array = make_move_chunk(combinations, true)
+    best_combination = find_best_combination2(combinations_array)
+
+    value = count_position_values(best_combination[0])
     all_unique_combinations = ['dummy']
     times = 0
     times2 = 0
     u = all_unique_combinations
     h = all_unique_combinations.length
     if value > 0 && i < 10
-      move_controller([combination], i+1)
+      move_controller([best_combination], i+1)
     else
-      console.log combination[0]
-      console.log combination[1]
-      return combination[1]
+      console.log best_combination[0]
+      console.log best_combination[1]
+      return best_combination[1]
 
 
   combinations_array = []
