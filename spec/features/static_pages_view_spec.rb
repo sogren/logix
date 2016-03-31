@@ -10,7 +10,7 @@ RSpec.describe 'StaticPages view', type: :feature do
       it 'show logix page' do
         visit_page(root_path)
         expect(page).to have_content('Logix')
-        expect(page).to have_content('Lorem ipsum')
+        expect(page).to have_content('Just press play button')
       end
     end
 
@@ -39,7 +39,7 @@ RSpec.describe 'StaticPages view', type: :feature do
       it 'show logix page' do
         visit_page(root_path)
         expect(page).to have_content('Logix')
-        expect(page).to have_content('Lorem ipsum')
+        expect(page).to have_content('Just press play button')
       end
     end
 

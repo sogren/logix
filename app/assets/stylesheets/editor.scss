@@ -1,29 +1,32 @@
+$border: 15px solid;
+$border-important: 15px solid transparent !important;
+
 .triangle-tl, .triangle-bl, .triangle-tr,.triangle-br {
   position:absolute;
 }
 .triangle-tl{
   top:0;
   left:0;
-  border-top:15px solid;
-  border-right:15px solid transparent !important;
+  border-top: $border;
+  border-right: $border-important;
 }
 .triangle-bl{
   bottom:0;
   left:0;
-  border-bottom:15px solid;
-  border-right:15px solid transparent !important;
+  border-bottom: $border;
+  border-right: $border-important;
 }
 .triangle-tr{
   top:0;
   right:0;
-  border-top:15px solid;
-  border-left:15px solid transparent !important;
+  border-top: $border;
+  border-left: $border-important;
 }
 .triangle-br{
   bottom:0;
   right:0;
-  border-bottom:15px solid;
-  border-left:15px solid transparent !important;
+  border-bottom: $border;
+  border-left: $border-important;
 }
 .wb{ border-color:#FFF; }
 #blocks, #homes, #walls{
@@ -37,6 +40,7 @@
     background: #EEE;
   }
 }
+
 #walls{
   .w{ border-color:#FFF; }
   .s{ border-color:#666; }
