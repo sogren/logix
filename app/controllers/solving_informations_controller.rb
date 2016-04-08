@@ -1,0 +1,2 @@
+class SolvingInformationsController < ApplicationController
+end

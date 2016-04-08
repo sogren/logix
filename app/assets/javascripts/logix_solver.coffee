@@ -189,8 +189,8 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     else
       return combinations_array
 
-  # finds combination closest to win
-  find_best_combination = (combinations_array) ->
+  # lowest sum of values
+  strategy_best_combination = (combinations_array) ->
     best_combination = []
     best_value = 1000
     combinations_array.forEach (combination) ->
@@ -201,8 +201,8 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
         best_combination = combination
     return best_combination
 
-  # finds combination closest to win
-  find_best_combination2 = (combinations_array) ->
+  # lowest maximum value
+  strategy_highest_combination_pv = (combinations_array) ->
     best_combination = []
     highest_value = 1000
     combinations_array.forEach (combination) ->
@@ -220,7 +220,7 @@ window.solve_level = (map_array, hash_blocks, hash_homes) ->
     console.log '######################'
 
     combinations_array = make_move_chunk(combinations, true)
-    best_combination = find_best_combination2(combinations_array)
+    best_combination = strategy_best_combination(combinations_array)
 
     value = count_position_values(best_combination[0])
     all_unique_combinations = ['dummy']
